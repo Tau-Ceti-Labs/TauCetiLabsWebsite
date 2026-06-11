@@ -1,0 +1,125 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import site from "../content/site.json";
+---
+
+<BaseLayout>
+  <SiteHeader current="home" />
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">{site.hero.eyebrow}</p>
+        <h1>{site.hero.title}</h1>
+        <p class="lead">{site.hero.body}</p>
+        <div class="action-row" aria-label="Primary actions">
+          <a class="button button-primary" href="#projects" data-event="view_projects">View Projects</a>
+          <a class="button button-secondary" href={site.links.discord} data-event="open_discord">Join Discord</a>
+        </div>
+      </div>
+      <div class="hero-mark" aria-label="Tau Ceti Labs">
+        <img src="/assets/tau-ceti-labs-logo.png" alt="Tau Ceti Labs logo." />
+      </div>
+    </section>
+
+    <section id="projects" class="projects-section">
+      <div class="section-heading">
+        <p class="eyebrow">Current projects</p>
+        <h2>Product depth lives on the product sites.</h2>
+      </div>
+      <div class="project-grid">
+        {site.projects.map((project) => (
+          <article class="project-card">
+            <img class="project-image" src={project.image} alt={`${project.name} project artwork.`} />
+            <div class="project-body">
+              <div class="project-title">
+                <img src={project.icon} alt="" />
+                <div>
+                  <h3>{project.name}</h3>
+                  <p>{project.status}</p>
+                </div>
+              </div>
+              <p>{project.summary}</p>
+              <a class="button button-quiet" href={project.url} data-event={project.event}>{project.cta}</a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="principles-section">
+      <div class="section-heading">
+        <p class="eyebrow">Studio pattern</p>
+        <h2>Science-minded games, current-state claims.</h2>
+      </div>
+      <div class="principles-grid">
+        {site.principles.map((principle) => (
+          <article>
+            <p>{principle}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="lab-section">
+      <div>
+        <p class="eyebrow">{site.gameRoom.status}</p>
+        <h2>{site.gameRoom.title}</h2>
+        <p>{site.gameRoom.body}</p>
+      </div>
+      <img src="/assets/tcl-ingot-glow.png" alt="Experimental material visualization from Tau Ceti Labs." />
+    </section>
+
+    <section id="subscribe" class="subscribe-section">
+      <div class="section-heading">
+        <p class="eyebrow">Studio updates</p>
+        <h2>{site.subscribe.title}</h2>
+        <p>{site.subscribe.body}</p>
+      </div>
+      <form class="subscribe-form" data-subscribe-form data-event="submit_subscribe">
+        <label>
+          <span>Email</span>
+          <input type="email" name="email" autocomplete="email" required />
+        </label>
+        <label>
+          <span>Name <em>optional</em></span>
+          <input type="text" name="name" autocomplete="name" />
+        </label>
+        <label>
+          <span>Interest <em>optional</em></span>
+          <select name="interest">
+            <option value="">Choose one</option>
+            <option value="studio">Tau Ceti Labs</option>
+            <option value="lithobreak">LithoBreak</option>
+            <option value="racecards">RaceCards</option>
+            <option value="press">Press / creator</option>
+          </select>
+        </label>
+        <label class="checkbox-label">
+          <input type="checkbox" name="consentTauCetiUpdates" value="true" checked />
+          <span>Notify me about Tau Ceti Labs studio updates</span>
+        </label>
+        <label class="subscribe-honeypot" aria-hidden="true">
+          <span>Website</span>
+          <input type="text" name="website" tabindex="-1" autocomplete="off" />
+        </label>
+        <button class="button button-primary" type="submit">Subscribe</button>
+        <p class="subscribe-status" data-subscribe-status aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <a href="/" aria-label={site.brand.name}>
+      <img src="/assets/tau-ceti-labs-logo.png" alt="" />
+      <span>{site.brand.name}</span>
+    </a>
+    <nav>
+      <a href="/about/">About</a>
+      <a href="/press/">Press</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/terms/">Terms</a>
+    </nav>
+  </footer>
+</BaseLayout>

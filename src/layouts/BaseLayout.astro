@@ -1,0 +1,125 @@
+---
+import "../styles/global.css";
+import site from "../content/site.json";
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  imageAlt?: string;
+}
+
+const {
+  title = `${site.brand.name} | ${site.brand.tagline}`,
+  description = site.brand.description,
+  image = "/assets/tcl-hero-lithobreak-legacy.jpg",
+  imageAlt = "Tau Ceti Labs science-driven game artwork with a lunar industrial scene."
+} = Astro.props;
+
+const canonicalPath = Astro.url.pathname === "/" ? "" : Astro.url.pathname.replace(/\/$/, "");
+const canonical = `${site.links.canonical.replace(/\/$/, "")}${canonicalPath}`;
+const imageUrl = image.startsWith("http") ? image : `${site.links.canonical.replace(/\/$/, "")}${image}`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={imageUrl} />
+    <meta property="og:image:alt" content={imageAlt} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={imageUrl} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    {site.analytics.enabled && site.analytics.provider === "plausible" && (
+      <script is:inline defer data-domain={site.analytics.domain} src="https://plausible.io/js/script.outbound-links.js"></script>
+    )}
+  </head>
+  <body>
+    <slot />
+    <script is:inline>
+      window.tauCetiTrack = function tauCetiTrack(eventName, props) {
+        if (!eventName) return;
+        window.dispatchEvent(new CustomEvent("tauceti:event", { detail: { eventName, props: props || {} } }));
+        if (typeof window.plausible === "function") {
+          window.plausible(eventName, { props: props || {} });
+        }
+      };
+
+      document.addEventListener("click", function (event) {
+        var target = event.target.closest("[data-event]");
+        if (!target) return;
+        window.tauCetiTrack(target.getAttribute("data-event"), {
+          href: target.getAttribute("href") || "",
+          label: target.textContent.trim()
+        });
+      });
+
+      document.addEventListener("submit", async function (event) {
+        var form = event.target.closest("[data-subscribe-form]");
+        if (!form) return;
+
+        event.preventDefault();
+
+        var status = form.querySelector("[data-subscribe-status]");
+        var submit = form.querySelector("button[type='submit']");
+        var formData = new FormData(form);
+        var payload = {
+          email: String(formData.get("email") || ""),
+          name: String(formData.get("name") || ""),
+          interest: String(formData.get("interest") || ""),
+          consentTauCetiUpdates: formData.get("consentTauCetiUpdates") === "true",
+          website: String(formData.get("website") || "")
+        };
+
+        if (status) {
+          status.textContent = "Sending...";
+          status.dataset.state = "pending";
+        }
+        if (submit) submit.disabled = true;
+
+        try {
+          var response = await fetch("/api/subscribe", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+          });
+          var result = await response.json().catch(function () {
+            return {};
+          });
+
+          if (!response.ok) {
+            throw new Error(result.message || "Signup could not be saved right now.");
+          }
+
+          if (status) {
+            status.textContent = "Thanks. You are on the Tau Ceti Labs update list.";
+            status.dataset.state = "success";
+          }
+          form.reset();
+          var consent = form.querySelector("input[name='consentTauCetiUpdates']");
+          if (consent) consent.checked = true;
+          window.tauCetiTrack("submit_subscribe", {
+            interest: payload.interest || "unspecified"
+          });
+        } catch (error) {
+          if (status) {
+            status.textContent = error.message || "Signup could not be saved right now.";
+            status.dataset.state = "error";
+          }
+        } finally {
+          if (submit) submit.disabled = false;
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,20 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import site from "../content/site.json";
+---
+
+<BaseLayout title={`Terms | ${site.brand.name}`} description="Tau Ceti Labs website terms.">
+  <SiteHeader current="terms" />
+  <main class="page-main">
+    <section class="page-hero">
+      <p class="eyebrow">Terms</p>
+      <h1>Website terms.</h1>
+    </section>
+    <section class="text-section">
+      <p>This site provides company information and links to Tau Ceti Labs projects. Product purchases, platform terms, and downloads may be governed by their own storefront or product-specific terms.</p>
+      <p>Do not redistribute Tau Ceti Labs logos, screenshots, or press materials outside ordinary coverage, commentary, store listing, or community sharing contexts without permission.</p>
+      <p>For questions, contact <a href={`mailto:${site.brand.contactEmail}`}>{site.brand.contactEmail}</a>.</p>
+    </section>
+  </main>
+</BaseLayout>

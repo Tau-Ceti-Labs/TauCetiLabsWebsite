@@ -1,0 +1,33 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import site from "../content/site.json";
+---
+
+<BaseLayout title={`Press | ${site.brand.name}`} description="Tau Ceti Labs press and project links.">
+  <SiteHeader current="press" />
+  <main class="page-main">
+    <section class="page-hero">
+      <p class="eyebrow">Press</p>
+      <h1>Company links and product press kits.</h1>
+      <p>Use the product sites for current game descriptions, screenshots, and state-of-development notes. This company page stays deliberately lightweight.</p>
+    </section>
+    <section class="press-grid">
+      <article>
+        <h2>LithoBreak</h2>
+        <p>Early Access industrial builder in active rebuild.</p>
+        <a class="button button-secondary" href={site.links.lithobreakPressKit} data-event="open_lithobreak_press">LithoBreak Press Kit</a>
+      </article>
+      <article>
+        <h2>Tau Ceti RaceCards</h2>
+        <p>Print-and-play tabletop racing game in development.</p>
+        <a class="button button-secondary" href={site.links.raceCards} data-event="open_racecards">RaceCards Site</a>
+      </article>
+      <article>
+        <h2>Company</h2>
+        <p>For general company requests, contact Tau Ceti Labs directly.</p>
+        <a class="button button-secondary" href={`mailto:${site.brand.contactEmail}`}>Email Tau Ceti Labs</a>
+      </article>
+    </section>
+  </main>
+</BaseLayout>

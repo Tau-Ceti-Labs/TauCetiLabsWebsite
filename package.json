@@ -1,0 +1,19 @@
+{
+  "name": "taucetilabs-website",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node node_modules/astro/astro.js dev",
+    "build": "node node_modules/astro/astro.js check && node node_modules/astro/astro.js build",
+    "preview": "node node_modules/astro/astro.js preview",
+    "check": "node node_modules/astro/astro.js check",
+    "verify:static": "node scripts/verify-static.mjs",
+    "test:api": "node api/test-subscribe.cjs"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.4",
+    "astro": "^5.9.2",
+    "typescript": "^5.8.3"
+  }
+}

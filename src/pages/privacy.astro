@@ -1,0 +1,24 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import site from "../content/site.json";
+---
+
+<BaseLayout title={`Privacy | ${site.brand.name}`} description="Tau Ceti Labs privacy notes for the company website and update signup.">
+  <SiteHeader current="privacy" />
+  <main class="page-main">
+    <section class="page-hero">
+      <p class="eyebrow">Privacy</p>
+      <h1>Privacy notes for the company site.</h1>
+    </section>
+    <section class="text-section">
+      <h2>Static website</h2>
+      <p>The Tau Ceti Labs website is a static company hub hosted on Azure Static Web Apps. Basic server logs may be retained by the hosting provider for security and operations.</p>
+      <h2>Updates</h2>
+      <p>If you submit the company update form, your email and optional name/interest are stored in Azure Table Storage and may be synced to a configured SendGrid Tau Ceti Labs updates list.</p>
+      <p>Consent on this site is for Tau Ceti Labs general studio updates only. It is not consent for LithoBreak development updates or RaceCards premium launch updates unless those product-specific forms are submitted separately.</p>
+      <h2>Contact</h2>
+      <p>For privacy questions, contact <a href={`mailto:${site.brand.contactEmail}`}>{site.brand.contactEmail}</a>.</p>
+    </section>
+  </main>
+</BaseLayout>

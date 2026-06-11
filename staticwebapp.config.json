@@ -1,0 +1,56 @@
+{
+  "platform": {
+    "apiRuntime": "node:20"
+  },
+  "routes": [
+    { "route": "/racecards", "redirect": "https://www.race.cards/", "statusCode": 301 },
+    { "route": "/racecards/*", "redirect": "https://www.race.cards/", "statusCode": 301 },
+    { "route": "/lithobreak", "redirect": "https://www.lithobreak.com/", "statusCode": 301 },
+    { "route": "/lithobreak/*", "redirect": "https://www.lithobreak.com/", "statusCode": 301 },
+    { "route": "/presskit-lithobreak", "redirect": "https://www.lithobreak.com/press-kit/", "statusCode": 301 },
+    { "route": "/presskit-lithobreak/*", "redirect": "https://www.lithobreak.com/press-kit/", "statusCode": 301 },
+    { "route": "/media-lithobreak", "redirect": "https://www.lithobreak.com/press-kit/", "statusCode": 301 },
+    { "route": "/game-components-1", "redirect": "https://www.race.cards/quick-start/", "statusCode": 301 },
+    { "route": "/game-components-2", "redirect": "https://www.race.cards/quick-start/", "statusCode": 301 },
+    { "route": "/game-components-3", "redirect": "https://www.race.cards/quick-start/", "statusCode": 301 },
+    { "route": "/ready-to-play-1", "redirect": "https://www.race.cards/downloads/", "statusCode": 301 },
+    { "route": "/ready-to-play-2", "redirect": "https://www.race.cards/downloads/", "statusCode": 301 },
+    { "route": "/being-played-1", "redirect": "https://www.race.cards/", "statusCode": 301 },
+    { "route": "/being-played-2", "redirect": "https://www.race.cards/", "statusCode": 301 },
+    { "route": "/being-played-3", "redirect": "https://www.race.cards/", "statusCode": 301 },
+    { "route": "/being-played-4", "redirect": "https://www.race.cards/", "statusCode": 301 },
+    { "route": "/being-played-5", "redirect": "https://www.race.cards/", "statusCode": 301 },
+    { "route": "/instructions", "redirect": "https://www.race.cards/quick-start/", "statusCode": 301 },
+    { "route": "/home", "redirect": "/", "statusCode": 301 },
+    { "route": "/home-heights", "redirect": "/", "statusCode": 301 },
+    { "route": "/about-old", "redirect": "/about/", "statusCode": 301 },
+    { "route": "/new-page", "redirect": "/", "statusCode": 301 },
+    { "route": "/pitch", "redirect": "/", "statusCode": 301 },
+    { "route": "/verse", "redirect": "/", "statusCode": 301 },
+    { "route": "/allverse", "redirect": "/", "statusCode": 301 },
+    { "route": "/allverse/*", "redirect": "/", "statusCode": 301 },
+    { "route": "/termsofservice", "redirect": "/terms/", "statusCode": 301 }
+  ],
+  "navigationFallback": {
+    "rewrite": "/404.html",
+    "exclude": [
+      "/api/*",
+      "/assets/*",
+      "/*.{css,js,png,jpg,jpeg,webp,svg,ico,xml,txt}"
+    ]
+  },
+  "mimeTypes": {
+    ".webmanifest": "application/manifest+json"
+  },
+  "globalHeaders": {
+    "Content-Security-Policy": "default-src 'self'; img-src 'self' data: https://taucetilabs.com https://www.taucetilabs.com https://www.lithobreak.com https://www.race.cards; script-src 'self' 'unsafe-inline' https://plausible.io; style-src 'self' 'unsafe-inline'; connect-src 'self' https://plausible.io; frame-ancestors 'self' https://taucetilabs.com https://www.taucetilabs.com;",
+    "Referrer-Policy": "strict-origin-when-cross-origin",
+    "X-Content-Type-Options": "nosniff",
+    "X-Frame-Options": "SAMEORIGIN"
+  },
+  "responseOverrides": {
+    "404": {
+      "rewrite": "/404.html"
+    }
+  }
+}

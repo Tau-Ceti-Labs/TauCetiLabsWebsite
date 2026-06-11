@@ -1,0 +1,63 @@
+{
+  "brand": {
+    "name": "Tau Ceti Labs",
+    "tagline": "Play with Science",
+    "description": "Tau Ceti Labs is an independent studio building science-minded games and tabletop experiments with engineering at the core.",
+    "contactEmail": "team@taucetilabs.com"
+  },
+  "links": {
+    "canonical": "https://taucetilabs.com/",
+    "discord": "https://discord.gg/ckftPfH",
+    "lithobreak": "https://www.lithobreak.com/",
+    "lithobreakPressKit": "https://www.lithobreak.com/press-kit/",
+    "raceCards": "https://www.race.cards/",
+    "raceCardsQuickStart": "https://www.race.cards/quick-start/",
+    "raceCardsDownloads": "https://www.race.cards/downloads/"
+  },
+  "analytics": {
+    "enabled": false,
+    "provider": "plausible",
+    "domain": "taucetilabs.com"
+  },
+  "hero": {
+    "eyebrow": "Independent game studio",
+    "title": "Games with an engineering spine.",
+    "body": "Tau Ceti Labs builds playable systems around science, materials, movement, pressure, and repair. The company site is the hub; each game gets its own destination."
+  },
+  "projects": [
+    {
+      "name": "LithoBreak",
+      "status": "Early Access industrial builder",
+      "summary": "Wake the console and build the first foothold on a hostile moon. LithoBreak is being rebuilt in public around a smaller, clearer first-site loop.",
+      "image": "/assets/lithobreak-return-console-card.png",
+      "icon": "/assets/lithobreak-icon.png",
+      "url": "https://www.lithobreak.com/",
+      "cta": "Visit LithoBreak",
+      "event": "open_lithobreak"
+    },
+    {
+      "name": "Tau Ceti RaceCards",
+      "status": "Print-and-play tabletop racing",
+      "summary": "A tabletop racing game in development, playable now as a print-and-play kit, with a premium physical version planned.",
+      "image": "/assets/racecards-tabletop-layout.jpg",
+      "icon": "/assets/racecards-icon.png",
+      "url": "https://www.race.cards/",
+      "cta": "Visit RaceCards",
+      "event": "open_racecards"
+    }
+  ],
+  "principles": [
+    "Build small systems that make readable pressure.",
+    "Prefer honest current-state claims over future-tense spectacle.",
+    "Let product sites carry product depth; keep the company hub clear."
+  ],
+  "gameRoom": {
+    "title": "Game Room",
+    "body": "A future /play area can host small web games, prototypes, and science toys after the company migration is stable.",
+    "status": "Phase 2"
+  },
+  "subscribe": {
+    "title": "Company updates",
+    "body": "Occasional Tau Ceti Labs updates about studio releases, project launches, and public experiments. Product-specific updates remain separate."
+  }
+}

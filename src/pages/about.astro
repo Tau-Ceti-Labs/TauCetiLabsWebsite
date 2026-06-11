@@ -1,0 +1,22 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import site from "../content/site.json";
+---
+
+<BaseLayout title={`About | ${site.brand.name}`} description="About Tau Ceti Labs, an independent studio building science-minded games.">
+  <SiteHeader current="about" />
+  <main class="page-main">
+    <section class="page-hero">
+      <p class="eyebrow">About</p>
+      <h1>Independent games with engineering pressure.</h1>
+      <p>Tau Ceti Labs builds games around systems that can be read, tested, repaired, and improved. The current public focus is LithoBreak and Tau Ceti RaceCards.</p>
+    </section>
+    <section class="text-section">
+      <h2>What the company site is for</h2>
+      <p>This site is the routing layer for the studio. Product sites carry product detail, status, downloads, press kits, and feedback. The company site keeps the identity, contact paths, and public project index stable.</p>
+      <h2>Contact</h2>
+      <p>For press, creator, privacy, or general questions, contact <a href={`mailto:${site.brand.contactEmail}`}>{site.brand.contactEmail}</a>.</p>
+    </section>
+  </main>
+</BaseLayout>

@@ -1,0 +1,21 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import site from "../content/site.json";
+---
+
+<BaseLayout title={`Not Found | ${site.brand.name}`} description="Tau Ceti Labs page not found.">
+  <SiteHeader />
+  <main class="page-main">
+    <section class="page-hero">
+      <p class="eyebrow">404</p>
+      <h1>That page is not here.</h1>
+      <p>Use the project links below or return to the studio homepage.</p>
+      <div class="action-row">
+        <a class="button button-primary" href="/">Home</a>
+        <a class="button button-secondary" href={site.links.lithobreak}>LithoBreak</a>
+        <a class="button button-secondary" href={site.links.raceCards}>RaceCards</a>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

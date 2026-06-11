@@ -1,0 +1,22 @@
+---
+import site from "../content/site.json";
+
+interface Props {
+  current?: "home" | "about" | "press" | "privacy" | "terms";
+}
+
+const { current = "home" } = Astro.props;
+---
+
+<header class="site-header">
+  <a class="brand-link" href="/" aria-label={site.brand.name}>
+    <img src="/assets/tau-ceti-labs-logo.png" alt="" />
+    <span>{site.brand.name}</span>
+  </a>
+  <nav aria-label="Main navigation">
+    <a href="/" aria-current={current === "home" ? "page" : undefined}>Home</a>
+    <a href="/about/" aria-current={current === "about" ? "page" : undefined}>About</a>
+    <a href="/press/" aria-current={current === "press" ? "page" : undefined}>Press</a>
+    <a href={site.links.discord} data-event="open_discord">Discord</a>
+  </nav>
+</header>
