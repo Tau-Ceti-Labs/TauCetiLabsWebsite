@@ -19,6 +19,15 @@ const requiredFiles = [
   "api/subscribe/function.json",
   "api/subscribe/index.js",
   "public/assets/tau-ceti-labs-logo.png",
+  "public/assets/tau-ceti-labs-logo-icononly.png",
+  "public/assets/tcl-lab-desk-decals-sprite-sheet.png",
+  "public/assets/tcl-hazard-hex-decal.png",
+  "public/assets/tcl-danger-decal.png",
+  "public/assets/tcl-coffee-clean-01-speckles-left.png",
+  "public/assets/tcl-coffee-clean-02-spill-large.png",
+  "public/assets/tcl-coffee-clean-06-small-splat-left.png",
+  "public/assets/tcl-coffee-clean-10-ring-splashed.png",
+  "public/assets/tcl-coffee-clean-13-ring-full.png",
   "public/assets/tcl-ingot-glow.png",
   "public/assets/lithobreak-return-console-card.png",
   "public/assets/lithobreak-icon.png",
@@ -90,8 +99,8 @@ for (const eventName of requiredEvents) {
 const allText = `${JSON.stringify(site)}\n${home}\n${about}\n${press}\n${privacy}\n${terms}\n${docs}`;
 for (const phrase of [
   "Play with Science",
-  "Games with an engineering spine",
-  "Product depth lives on the product sites",
+  "Games from the far workbench",
+  "Two active specimens on the bench",
   "taucetilabs_general_updates",
   "Phase 2",
   "company hub"
@@ -155,8 +164,8 @@ if (!robots.includes("Sitemap: https://www.taucetilabs.com/sitemap.xml")) {
 if (!workflow.includes('app_location: "dist"') || !workflow.includes('api_location: "api"')) {
   fail("GitHub workflow must deploy dist and api");
 }
-if (!header.includes("tau-ceti-labs-logo.png") || !layout.includes('rel="icon" href="/favicon.svg"')) {
-  fail("site must use Tau Ceti Labs brand assets");
+if (!header.includes("tau-ceti-labs-logo-icononly.png") || !home.includes("tau-ceti-labs-logo-icononly.png") || !layout.includes('rel="icon" href="/assets/tau-ceti-labs-logo-icononly.png"')) {
+  fail("header, footer, and favicon must use the Tau Ceti Labs icon-only asset");
 }
 
 const headers = config.globalHeaders ?? {};

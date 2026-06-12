@@ -20,9 +20,9 @@
     "domain": "taucetilabs.com"
   },
   "hero": {
-    "eyebrow": "Independent game studio",
-    "title": "Games with an engineering spine.",
-    "body": "Tau Ceti Labs builds playable systems around science, materials, movement, pressure, and repair. The company site is the hub; each game gets its own destination."
+    "eyebrow": "Tau Ceti field lab",
+    "title": "Games from the far workbench.",
+    "body": "Tau Ceti Labs builds playable systems around science, materials, movement, pressure, and repair, as if the notes were coming back from a bright, messy lab a dozen light years away."
   },
   "projects": [
     {
@@ -53,7 +53,7 @@
   ],
   "gameRoom": {
     "title": "Game Room",
-    "body": "A future /play area can host small web games, prototypes, and science toys after the company migration is stable.",
+    "body": "A future /play area can host small web games, prototypes, and science toys once the main lab terminal is stable.",
     "status": "Phase 2"
   },
   "subscribe": {

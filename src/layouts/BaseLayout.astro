@@ -39,7 +39,8 @@ const imageUrl = image.startsWith("http") ? image : `${site.links.canonical.repl
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={imageUrl} />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/assets/tau-ceti-labs-logo-icononly.png" type="image/png" />
+    <link rel="apple-touch-icon" href="/assets/tau-ceti-labs-logo-icononly.png" />
     {site.analytics.enabled && site.analytics.provider === "plausible" && (
       <script is:inline defer data-domain={site.analytics.domain} src="https://plausible.io/js/script.outbound-links.js"></script>
     )}
