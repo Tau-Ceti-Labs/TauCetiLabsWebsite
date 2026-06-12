@@ -1,6 +1,6 @@
 # Tau Ceti Labs Website Deployment
 
-Canonical public destination: `https://taucetilabs.com/`. The `www` hostname should redirect to the apex.
+Canonical public destination: `https://www.taucetilabs.com/`. The apex hostname is bound and served by the same Azure Static Web App.
 
 ## Azure Target
 
@@ -8,8 +8,8 @@ Canonical public destination: `https://taucetilabs.com/`. The `www` hostname sho
 - Resource group: `rg-taucetilabs-web`
 - Static Web App: `swa-taucetilabs-web`
 - Default hostname: `https://victorious-rock-0bf71380f.7.azurestaticapps.net/`
-- Primary domain: `taucetilabs.com`
-- Secondary domain: `www.taucetilabs.com` redirecting to apex
+- Primary domain: `www.taucetilabs.com`
+- Secondary domain: `taucetilabs.com`
 - API: Azure Functions from the `api/` folder
 
 ## GitHub Setup
@@ -36,30 +36,30 @@ Consent scope is `taucetilabs_general_updates`. Do not treat this as consent for
 
 Current verified DNS:
 
-- Authoritative nameservers are Microsoft Online DNS.
-- Apex currently uses Squarespace A records.
-- `www` currently CNAMEs to `ext-sq.squarespace.com`.
+- Authoritative nameservers are Azure DNS.
+- `www` CNAMEs to `victorious-rock-0bf71380f.7.azurestaticapps.net`.
+- Apex uses the Static Web Apps stable inbound IP.
 
 Preferred rollout:
 
 1. Deploy and verify on the Azure default hostname.
 2. Inventory and preserve Microsoft 365 mail records, SendGrid records, Search Console records, SPF, DKIM, DMARC, TXT, MX, CNAME, and A records.
-3. If Microsoft Online DNS cannot support the apex binding required by Azure Static Web Apps, migrate authoritative DNS to Azure DNS.
-4. Bind `taucetilabs.com` to Azure Static Web Apps.
-5. Bind `www.taucetilabs.com` and configure it to redirect to apex.
-6. Verify HTTPS, redirects, sitemap, robots, and old URL redirects.
+3. Migrate authoritative DNS to Azure DNS.
+4. Bind `www.taucetilabs.com` and `taucetilabs.com` to Azure Static Web Apps.
+5. Verify HTTPS, sitemap, robots, subscribe API, and old URL redirects.
+6. Use canonical metadata and sitemap entries for `www`. Add Azure Front Door later only if strict host-level apex-to-www redirects become necessary.
 7. Keep Squarespace hosting active for one to two weeks before cancellation.
 
 ## Launch Verification
 
 ```powershell
-curl.exe -I https://taucetilabs.com/
 curl.exe -I https://www.taucetilabs.com/
-curl.exe -I https://taucetilabs.com/racecards
-curl.exe -I https://taucetilabs.com/lithobreak
-curl.exe -I https://taucetilabs.com/presskit-lithobreak
-curl.exe -I https://taucetilabs.com/privacy/
-curl.exe -I https://taucetilabs.com/terms/
+curl.exe -I https://taucetilabs.com/
+curl.exe -I https://www.taucetilabs.com/racecards
+curl.exe -I https://www.taucetilabs.com/lithobreak
+curl.exe -I https://www.taucetilabs.com/presskit-lithobreak
+curl.exe -I https://www.taucetilabs.com/privacy/
+curl.exe -I https://www.taucetilabs.com/terms/
 ```
 
 Submit one company signup test after app settings are configured and confirm the subscriber row has `taucetilabs_general_updates` and `tauCetiSendGridMarketingStatus` is `synced`.
@@ -68,7 +68,7 @@ Submit one company signup test after app settings are configured and confirm the
 
 After launch:
 
-1. Verify `https://taucetilabs.com/`.
-2. Submit `https://taucetilabs.com/sitemap.xml`.
+1. Verify `https://www.taucetilabs.com/`.
+2. Submit `https://www.taucetilabs.com/sitemap.xml`.
 3. Request indexing for homepage, about, press, privacy, and terms.
 4. Check that old product URLs redirect to standalone product sites.

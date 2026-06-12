@@ -71,8 +71,8 @@ const docs = `${await readFile("docs/site-strategy.md", "utf8")}\n${await readFi
 if (site.brand.name !== "Tau Ceti Labs") {
   fail("brand name must be Tau Ceti Labs");
 }
-if (site.links.canonical !== "https://taucetilabs.com/") {
-  fail("canonical URL must be https://taucetilabs.com/");
+if (site.links.canonical !== "https://www.taucetilabs.com/") {
+  fail("canonical URL must be https://www.taucetilabs.com/");
 }
 if (site.links.lithobreak !== "https://www.lithobreak.com/" || site.links.raceCards !== "https://www.race.cards/") {
   fail("project links must point to standalone product sites");
@@ -139,18 +139,18 @@ for (const [route, redirect] of requiredRedirects) {
 }
 
 for (const url of [
-  "https://taucetilabs.com/",
-  "https://taucetilabs.com/about/",
-  "https://taucetilabs.com/press/",
-  "https://taucetilabs.com/privacy/",
-  "https://taucetilabs.com/terms/"
+  "https://www.taucetilabs.com/",
+  "https://www.taucetilabs.com/about/",
+  "https://www.taucetilabs.com/press/",
+  "https://www.taucetilabs.com/privacy/",
+  "https://www.taucetilabs.com/terms/"
 ]) {
   if (!sitemap.includes(url)) {
     fail(`sitemap missing ${url}`);
   }
 }
-if (!robots.includes("Sitemap: https://taucetilabs.com/sitemap.xml")) {
-  fail("robots must point to the apex sitemap");
+if (!robots.includes("Sitemap: https://www.taucetilabs.com/sitemap.xml")) {
+  fail("robots must point to the www sitemap");
 }
 if (!workflow.includes('app_location: "dist"') || !workflow.includes('api_location: "api"')) {
   fail("GitHub workflow must deploy dist and api");

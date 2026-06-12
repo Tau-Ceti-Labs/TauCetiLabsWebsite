@@ -2,7 +2,7 @@
 
 Standalone Astro/Azure Static Web Apps company hub for Tau Ceti Labs.
 
-Canonical public destination: `https://taucetilabs.com/`.
+Canonical public destination: `https://www.taucetilabs.com/`.
 
 ## Commands
 

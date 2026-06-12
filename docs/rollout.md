@@ -14,8 +14,8 @@
 - Preserve Microsoft 365 records before DNS changes.
 - Preserve SendGrid authentication records for `taucetilabs.com`.
 - Bind apex and `www` in Azure Static Web Apps.
-- Keep apex canonical.
-- Confirm `www` redirects to `https://taucetilabs.com/`.
+- Keep `www` canonical.
+- Confirm both hostnames serve the Azure site; add Front Door later only if strict host-level apex-to-www redirects become necessary.
 
 ## Postlaunch
 
