@@ -14,10 +14,23 @@ Canonical public destination: `https://www.taucetilabs.com/`. The apex hostname 
 
 ## GitHub Setup
 
-1. GitHub repo: `https://github.com/cmoeTCL/TauCetiLabsWebsite`.
+1. GitHub repo: `https://github.com/Tau-Ceti-Labs/TauCetiLabsWebsite`.
 2. Default branch: `main`.
 3. Add Azure deployment token as `AZURE_STATIC_WEB_APPS_API_TOKEN`.
 4. Confirm `.github/workflows/azure-static-web-apps.yml` deploys `dist/` and `api/`.
+
+## Content Update Workflow
+
+For ordinary company-site copy, asset, or routing updates:
+
+1. Create a focused branch.
+2. Treat product/game folders as read-only unless the task explicitly authorizes changes there.
+3. Record copied or derived asset provenance.
+4. Run `npm.cmd run build`, `npm.cmd run verify:static`, and `npm.cmd run test:api`.
+5. Push the branch and review the Azure pull-request preview.
+6. Merge only after required checks pass; `main` deploys production.
+
+Use `workflow_dispatch` for recovery and direct Azure CLI deployment only for an explicitly approved emergency. Reconcile any emergency deployment back into Git immediately.
 
 ## Subscribe API Settings
 
