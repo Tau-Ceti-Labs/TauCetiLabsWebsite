@@ -19,6 +19,9 @@ const {
 const canonicalPath = Astro.url.pathname === "/" ? "" : Astro.url.pathname.replace(/\/$/, "");
 const canonical = `${site.links.canonical.replace(/\/$/, "")}${canonicalPath}`;
 const imageUrl = image.startsWith("http") ? image : `${site.links.canonical.replace(/\/$/, "")}${image}`;
+const googleAnalyticsEnabled = site.analytics.enabled && site.analytics.provider === "google";
+const measurementId = site.analytics.measurementId;
+const consentStorageKey = `tauceti:analytics-consent:${site.analytics.domain}`;
 ---
 
 <!doctype html>
@@ -41,20 +44,136 @@ const imageUrl = image.startsWith("http") ? image : `${site.links.canonical.repl
     <meta name="twitter:image" content={imageUrl} />
     <link rel="icon" href="/assets/tau-ceti-labs-logo-icononly.png" type="image/png" />
     <link rel="apple-touch-icon" href="/assets/tau-ceti-labs-logo-icononly.png" />
-    {site.analytics.enabled && site.analytics.provider === "plausible" && (
-      <script is:inline defer data-domain={site.analytics.domain} src="https://plausible.io/js/script.outbound-links.js"></script>
+    {googleAnalyticsEnabled && (
+      <script is:inline define:vars={{ measurementId, consentStorageKey }}>
+        (function () {
+          window.dataLayer = window.dataLayer || [];
+          window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
+          window.gtag("consent", "default", {
+            ad_storage: "denied",
+            ad_user_data: "denied",
+            ad_personalization: "denied",
+            analytics_storage: "denied"
+          });
+
+          var choice = null;
+          try {
+            choice = window.localStorage.getItem(consentStorageKey);
+          } catch (_error) {
+            choice = null;
+          }
+          if (choice !== "granted" && choice !== "denied") choice = null;
+
+          function loadGoogleAnalytics() {
+            if (document.querySelector("script[data-google-analytics]")) return;
+            var script = document.createElement("script");
+            script.async = true;
+            script.dataset.googleAnalytics = "true";
+            script.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(measurementId);
+            document.head.appendChild(script);
+            window.gtag("js", new Date());
+            window.gtag("config", measurementId);
+          }
+
+          window.tauCetiAnalytics = {
+            choice: choice,
+            update: function (nextChoice) {
+              this.choice = nextChoice;
+              try {
+                window.localStorage.setItem(consentStorageKey, nextChoice);
+              } catch (_error) {
+                // Consent still applies for the current page if storage is unavailable.
+              }
+              window.gtag("consent", "update", {
+                ad_storage: "denied",
+                ad_user_data: "denied",
+                ad_personalization: "denied",
+                analytics_storage: nextChoice === "granted" ? "granted" : "denied"
+              });
+              if (nextChoice === "granted") loadGoogleAnalytics();
+            },
+            reset: function () {
+              this.choice = null;
+              try {
+                window.localStorage.removeItem(consentStorageKey);
+              } catch (_error) {
+                // The in-memory choice is still cleared.
+              }
+              window.gtag("consent", "update", {
+                ad_storage: "denied",
+                ad_user_data: "denied",
+                ad_personalization: "denied",
+                analytics_storage: "denied"
+              });
+            }
+          };
+
+          if (choice === "granted") {
+            window.tauCetiAnalytics.update("granted");
+          }
+        })();
+      </script>
     )}
   </head>
   <body>
     <slot />
+    {googleAnalyticsEnabled && (
+      <aside class="analytics-consent" data-analytics-consent hidden aria-label="Analytics preferences">
+        <p><strong>Optional analytics</strong> Help Tau Ceti Labs understand which projects and links are useful. Google Analytics loads only if you allow it; advertising storage stays off.</p>
+        <div class="analytics-consent-actions">
+          <button type="button" data-analytics-choice="granted">Allow analytics</button>
+          <button type="button" data-analytics-choice="denied">Not now</button>
+          <a href="/privacy/">Privacy and choices</a>
+        </div>
+      </aside>
+    )}
     <script is:inline>
+      function sanitizeAnalyticsProps(props) {
+        var safe = {};
+        Object.keys(props || {}).forEach(function (key) {
+          var value = props[key];
+          if (key === "href") {
+            try {
+              var url = new URL(String(value), window.location.origin);
+              safe.link_domain = url.hostname;
+              safe.link_path = url.origin === window.location.origin ? url.pathname : "";
+            } catch (_error) {
+              // Ignore malformed destinations instead of sending raw URLs.
+            }
+            return;
+          }
+          var safeKey = key.replace(/[A-Z]/g, function (letter) { return "_" + letter.toLowerCase(); });
+          safe[safeKey] = String(value).slice(0, 100);
+        });
+        return safe;
+      }
+
       window.tauCetiTrack = function tauCetiTrack(eventName, props) {
         if (!eventName) return;
         window.dispatchEvent(new CustomEvent("tauceti:event", { detail: { eventName, props: props || {} } }));
-        if (typeof window.plausible === "function") {
-          window.plausible(eventName, { props: props || {} });
+        if (window.tauCetiAnalytics && window.tauCetiAnalytics.choice === "granted" && typeof window.gtag === "function") {
+          window.gtag("event", eventName, sanitizeAnalyticsProps(props));
         }
       };
+
+      var analyticsConsent = document.querySelector("[data-analytics-consent]");
+      if (analyticsConsent && window.tauCetiAnalytics && !window.tauCetiAnalytics.choice) {
+        analyticsConsent.hidden = false;
+      }
+
+      document.addEventListener("click", function (event) {
+        var choiceButton = event.target.closest("[data-analytics-choice]");
+        if (!choiceButton || !window.tauCetiAnalytics) return;
+        window.tauCetiAnalytics.update(choiceButton.getAttribute("data-analytics-choice"));
+        if (analyticsConsent) analyticsConsent.hidden = true;
+      });
+
+      document.addEventListener("click", function (event) {
+        var resetButton = event.target.closest("[data-analytics-reset]");
+        if (!resetButton || !window.tauCetiAnalytics) return;
+        window.tauCetiAnalytics.reset();
+        window.location.reload();
+      });
 
       document.addEventListener("click", function (event) {
         var target = event.target.closest("[data-event]");

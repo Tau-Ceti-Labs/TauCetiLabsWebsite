@@ -15,8 +15,9 @@
     "raceCardsDownloads": "https://www.race.cards/downloads/"
   },
   "analytics": {
-    "enabled": false,
-    "provider": "plausible",
+    "enabled": true,
+    "provider": "google",
+    "measurementId": "G-YNN4P3GZR5",
     "domain": "taucetilabs.com"
   },
   "hero": {

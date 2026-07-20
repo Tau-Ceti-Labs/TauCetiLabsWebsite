@@ -89,6 +89,14 @@ if (site.links.lithobreak !== "https://www.lithobreak.com/" || site.links.raceCa
 if (site.links.discord !== "https://discord.gg/ckftPfH") {
   fail("Discord link must point to the verified Tau Ceti Labs invite");
 }
+if (!site.analytics.enabled || site.analytics.provider !== "google" || site.analytics.measurementId !== "G-YNN4P3GZR5") {
+  fail("Google Analytics must be enabled with the Tau Ceti Labs measurement ID");
+}
+for (const marker of ["analytics_storage", "data-analytics-consent", "googletagmanager.com/gtag/js", 'window.gtag("event"']) {
+  if (!layout.includes(marker)) {
+    fail(`analytics implementation missing ${marker}`);
+  }
+}
 
 for (const eventName of requiredEvents) {
   if (!home.includes(eventName) && !layout.includes(eventName) && !press.includes(eventName)) {
@@ -127,6 +135,9 @@ if (!home.includes("data-subscribe-form") || !layout.includes('fetch("/api/subsc
 }
 if (!privacy.includes("not consent for LithoBreak development updates or RaceCards premium launch updates")) {
   fail("privacy page must preserve separate consent boundaries");
+}
+if (!privacy.includes("Google Analytics 4") || !privacy.includes("data-analytics-reset")) {
+  fail("privacy page must explain Google Analytics and expose consent controls");
 }
 if (!subscribeApi.includes("TauCetiSubscriberContacts") || !subscribeApi.includes("taucetilabs_general_updates") || !subscribeApi.includes("SENDGRID_TAUCETILABS_LIST_ID")) {
   fail("subscribe API must use shared contacts, company consent scope, and SendGrid list setting");
@@ -172,6 +183,11 @@ const headers = config.globalHeaders ?? {};
 for (const headerName of ["Content-Security-Policy", "Referrer-Policy", "X-Content-Type-Options"]) {
   if (!headers[headerName]) {
     fail(`missing global header ${headerName}`);
+  }
+}
+for (const analyticsOrigin of ["*.googletagmanager.com", "*.google-analytics.com", "*.analytics.google.com"]) {
+  if (!headers["Content-Security-Policy"].includes(analyticsOrigin)) {
+    fail(`content security policy missing ${analyticsOrigin}`);
   }
 }
 

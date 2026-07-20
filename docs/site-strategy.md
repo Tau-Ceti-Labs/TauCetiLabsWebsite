@@ -1,8 +1,8 @@
 # Tau Ceti Labs Website Strategy
 
-## Current Squarespace Behavior
+## Historical Pre-Migration Squarespace Behavior
 
-Verified on 2026-06-11:
+Recorded on 2026-06-11 as the replacement baseline:
 
 - `https://taucetilabs.com/` returns the Squarespace-hosted homepage.
 - `https://www.taucetilabs.com/` redirects to `https://taucetilabs.com/`.
@@ -12,6 +12,17 @@ Verified on 2026-06-11:
 - Authoritative DNS is Microsoft Online DNS, not Squarespace.
 
 The current homepage says Tau Ceti Labs is an indie game studio, uses "Play With Science", links to LithoBreak, RaceCards, Discord, and includes a general subscribe form.
+
+## Current Public And Measurement State
+
+Audited on 2026-07-19:
+
+- `https://www.taucetilabs.com/` serves the replacement company hub and uses it as the canonical hostname.
+- Search results have discovered the replacement homepage, but they also still expose legacy non-`www` pages and claims. Redirect and canonical cleanup remains an active discovery task.
+- Google Analytics contains property `Tau Ceti Labs - GA4` (`375518847`), stream `5194520268`, and measurement ID `G-YNN4P3GZR5`; the stream URL was corrected to `https://www.taucetilabs.com` on 2026-07-19.
+- The `taucetilabs.com` Search Console domain property is verified through Azure DNS, linked to the matching GA4 stream, and its sitemap is successful with five discovered pages.
+- Consent-aware Google Analytics source is implemented locally; production data remains pending reviewed deployment.
+- The coordinated implementation and scorecard requirements are in the workspace [Analytics and Discovery Rollout](../../docs/analytics-and-discovery-rollout.md).
 
 ## Replacement Purpose
 
