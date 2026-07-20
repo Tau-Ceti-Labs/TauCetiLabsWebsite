@@ -79,9 +79,37 @@ Submit one company signup test after app settings are configured and confirm the
 
 ## Search Console
 
-After launch:
+State on 2026-07-19:
 
-1. Verify `https://www.taucetilabs.com/`.
-2. Submit `https://www.taucetilabs.com/sitemap.xml`.
-3. Request indexing for homepage, about, press, privacy, and terms.
-4. Check that old product URLs redirect to standalone product sites.
+- The `taucetilabs.com` domain property is verified through an apex TXT value in Azure DNS. The existing Microsoft, Azure-validation, and SPF values were preserved.
+- `https://www.taucetilabs.com/sitemap.xml` is successful with five discovered pages and was submitted/read on 2026-07-19.
+- The domain property is linked to GA4 property `375518847` and web stream `5194520268`.
+
+Next actions:
+
+1. Inspect the canonical pages as coverage data appears.
+2. Request indexing for homepage, about, press, privacy, and terms only after live canonical and redirect checks pass.
+3. Check that old product URLs redirect to standalone product sites.
+
+## Google Analytics
+
+Audit state on 2026-07-19:
+
+- Account: `TauCetiLabs` (`93388616`).
+- Property: `Tau Ceti Labs - GA4` (`375518847`).
+- Web stream: `Tau Ceti Labs - GA4` (`5194520268`).
+- Measurement ID: `G-YNN4P3GZR5`.
+- Stream URL: `https://www.taucetilabs.com` (corrected 2026-07-19).
+- Reporting timezone/currency: America/Los_Angeles and USD.
+- The property reported no received data at the initial audit.
+- Site source now contains an opt-in Google tag, Consent Mode v2 defaults, privacy controls, event sanitization, and GA4 CSP endpoints. Advertising consent types stay denied.
+
+Implementation actions:
+
+1. Run all local checks and inspect the consent banner in a browser preview.
+2. Publish a focused pull request and review the Azure preview.
+3. Validate one consented `page_view` plus the intended custom events in GA4 DebugView/realtime; confirm subscription fields are absent from Analytics requests.
+4. Merge and verify production collection.
+5. Completed 2026-07-19: linked the verified `taucetilabs.com` Search Console property to this web stream.
+
+The shared event vocabulary, privacy requirements, and multi-site rollout order are in `C:\Dev\Tau Ceti Labs\docs\analytics-and-discovery-rollout.md`.

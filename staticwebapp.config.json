@@ -43,7 +43,7 @@
     ".webmanifest": "application/manifest+json"
   },
   "globalHeaders": {
-    "Content-Security-Policy": "default-src 'self'; img-src 'self' data: https://taucetilabs.com https://www.taucetilabs.com https://www.lithobreak.com https://www.race.cards; script-src 'self' 'unsafe-inline' https://plausible.io; style-src 'self' 'unsafe-inline'; connect-src 'self' https://plausible.io; frame-ancestors 'self' https://taucetilabs.com https://www.taucetilabs.com;",
+    "Content-Security-Policy": "default-src 'self'; img-src 'self' data: https://taucetilabs.com https://www.taucetilabs.com https://www.lithobreak.com https://www.race.cards https://*.google-analytics.com https://*.googletagmanager.com; script-src 'self' 'unsafe-inline' https://*.googletagmanager.com; style-src 'self' 'unsafe-inline'; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; frame-ancestors 'self' https://taucetilabs.com https://www.taucetilabs.com;",
     "Referrer-Policy": "strict-origin-when-cross-origin",
     "X-Content-Type-Options": "nosniff",
     "X-Frame-Options": "SAMEORIGIN"
