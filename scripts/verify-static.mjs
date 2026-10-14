@@ -6,6 +6,7 @@ const requiredFiles = [
   "src/pages/about.astro",
   "src/pages/press.astro",
   "src/pages/privacy.astro",
+  "src/pages/lithobreak-outpost/privacy.astro",
   "src/pages/terms.astro",
   "src/pages/404.astro",
   "src/components/SiteHeader.astro",
@@ -67,6 +68,7 @@ const home = await readFile("src/pages/index.astro", "utf8");
 const about = await readFile("src/pages/about.astro", "utf8");
 const press = await readFile("src/pages/press.astro", "utf8");
 const privacy = await readFile("src/pages/privacy.astro", "utf8");
+const outpostPrivacy = await readFile("src/pages/lithobreak-outpost/privacy.astro", "utf8");
 const terms = await readFile("src/pages/terms.astro", "utf8");
 const header = await readFile("src/components/SiteHeader.astro", "utf8");
 const layout = await readFile("src/layouts/BaseLayout.astro", "utf8");
@@ -79,6 +81,9 @@ const docs = `${await readFile("docs/site-strategy.md", "utf8")}\n${await readFi
 
 if (site.brand.name !== "Tau Ceti Labs") {
   fail("brand name must be Tau Ceti Labs");
+}
+if (site.brand.contactEmail !== "team@taucetilabs.com") {
+  fail("privacy contact must be team@taucetilabs.com");
 }
 if (site.links.canonical !== "https://www.taucetilabs.com/") {
   fail("canonical URL must be https://www.taucetilabs.com/");
@@ -139,6 +144,14 @@ if (!privacy.includes("not consent for LithoBreak development updates or RaceCar
 if (!privacy.includes("Google Analytics 4") || !privacy.includes("data-analytics-reset")) {
   fail("privacy page must explain Google Analytics and expose consent controls");
 }
+if (privacy.includes('/lithobreak-outpost/privacy/') || home.includes('/lithobreak-outpost/privacy/')) {
+  fail("Outpost review draft must stay out of public site navigation");
+}
+for (const marker of ["LithoBreak: Outpost", "TauCetiLabs", "site.brand.contactEmail", "performance reports", "Android backup", 'robots="noindex"', "Draft for owner review"]) {
+  if (!outpostPrivacy.includes(marker)) {
+    fail(`Outpost privacy draft missing ${marker}`);
+  }
+}
 if (!subscribeApi.includes("TauCetiSubscriberContacts") || !subscribeApi.includes("taucetilabs_general_updates") || !subscribeApi.includes("SENDGRID_TAUCETILABS_LIST_ID")) {
   fail("subscribe API must use shared contacts, company consent scope, and SendGrid list setting");
 }
@@ -168,6 +181,9 @@ for (const url of [
   if (!sitemap.includes(url)) {
     fail(`sitemap missing ${url}`);
   }
+}
+if (sitemap.includes("https://www.taucetilabs.com/lithobreak-outpost/privacy/")) {
+  fail("Outpost review draft must stay out of the sitemap");
 }
 if (!robots.includes("Sitemap: https://www.taucetilabs.com/sitemap.xml")) {
   fail("robots must point to the www sitemap");

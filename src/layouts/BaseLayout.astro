@@ -7,13 +7,15 @@ interface Props {
   description?: string;
   image?: string;
   imageAlt?: string;
+  robots?: string;
 }
 
 const {
   title = `${site.brand.name} | ${site.brand.tagline}`,
   description = site.brand.description,
   image = "/assets/tcl-hero-lithobreak-legacy.jpg",
-  imageAlt = "Tau Ceti Labs science-driven game artwork with a lunar industrial scene."
+  imageAlt = "Tau Ceti Labs science-driven game artwork with a lunar industrial scene.",
+  robots
 } = Astro.props;
 
 const canonicalPath = Astro.url.pathname === "/" ? "" : Astro.url.pathname.replace(/\/$/, "");
@@ -31,6 +33,7 @@ const consentStorageKey = `tauceti:analytics-consent:${site.analytics.domain}`;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    {robots && <meta name="robots" content={robots} />}
     <link rel="canonical" href={canonical} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
