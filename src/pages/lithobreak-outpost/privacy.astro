@@ -1,0 +1,41 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SiteHeader from "../../components/SiteHeader.astro";
+import site from "../../content/site.json";
+---
+
+<BaseLayout
+  title={`LithoBreak: Outpost Privacy Policy | ${site.brand.name}`}
+  description="Privacy policy draft for the LithoBreak: Outpost Android game."
+  robots="noindex"
+>
+  <SiteHeader />
+  <main class="page-main">
+    <section class="page-hero">
+      <p class="eyebrow">LithoBreak: Outpost</p>
+      <h1>Privacy policy</h1>
+      <p><strong>Draft for owner review.</strong> The final Android release bundle and backup behavior still need verification before this policy is used in Google Play.</p>
+    </section>
+    <section class="text-section" aria-label="LithoBreak: Outpost privacy policy">
+      <p>This policy describes the Android game <strong>LithoBreak: Outpost</strong> (package <code>com.taucetilabs.lithobreakoutpost</code>). The developer appears on Google Play as <strong>TauCetiLabs</strong>. The company responsible for the game is <strong>Tau Ceti Labs</strong>, its registered legal name.</p>
+
+      <h2>Data the game stores on your device</h2>
+      <p>The current game saves your progress and gameplay settings in its app storage so that you can continue playing. It also writes local performance reports to help diagnose how the game runs. Those reports include the game and Unity versions, device model, operating system, graphics processor, screen dimensions, and frame and simulation timing. These files stay in the app's storage unless Android backup or device transfer includes them.</p>
+
+      <h2>Data sent from the game</h2>
+      <p>The current prototype has no player accounts, advertising, in-app purchases, online multiplayer, or player chat. Its authored game code does not send saved progress or performance reports to a Tau Ceti Labs server. Unity analytics, advertising, purchasing, and cloud diagnostic services are disabled in the current project configuration. We are checking the final release bundle, including native engine and platform behavior, before making a final statement about data collection or sharing.</p>
+
+      <h2>Android backup and platform services</h2>
+      <p>If backup or device transfer is enabled on your Android device, the platform may copy eligible app data according to your device and account settings. The final game's backup eligibility has not yet been verified. Google Play and Android handle their own platform data under their applicable privacy policies and settings.</p>
+
+      <h2>If you contact us</h2>
+      <p>If you email <a href={`mailto:${site.brand.contactEmail}`}>{site.brand.contactEmail}</a> for support or a privacy question, we receive the email address, message, and any information you choose to include. Our email provider processes messages to deliver and store them. We use this correspondence to respond to your request and troubleshoot the issue. We keep it as needed for support and ordinary business records, subject to applicable legal obligations. Contact us at the same address to ask about or request deletion of your correspondence.</p>
+
+      <h2>Security, retention, and deletion</h2>
+      <p>Game saves and performance reports are stored in Android app storage. Clearing the app's storage or uninstalling the game removes the local copies; a device or cloud backup may need separate deletion through your backup provider. We limit access to support correspondence to people handling the request and the services needed to deliver and store email. The exact retention period for support correspondence remains subject to owner review.</p>
+
+      <h2>Updates and contact</h2>
+      <p>We will update this policy when the game's data practices change. For questions about LithoBreak: Outpost privacy, email <a href={`mailto:${site.brand.contactEmail}`}>{site.brand.contactEmail}</a>. The <a href="/privacy/">company website privacy page</a> separately describes data practices when you browse this website or submit its update form.</p>
+    </section>
+  </main>
+</BaseLayout>
