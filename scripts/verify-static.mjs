@@ -7,6 +7,8 @@ const requiredFiles = [
   "src/pages/press.astro",
   "src/pages/privacy.astro",
   "src/pages/lithobreak-outpost/privacy.astro",
+  "src/pages/lithobreak-outpost/delete-account.astro",
+  "src/pages/lithobreak-outpost/terms.astro",
   "src/pages/terms.astro",
   "src/pages/404.astro",
   "src/components/SiteHeader.astro",
@@ -69,6 +71,8 @@ const about = await readFile("src/pages/about.astro", "utf8");
 const press = await readFile("src/pages/press.astro", "utf8");
 const privacy = await readFile("src/pages/privacy.astro", "utf8");
 const outpostPrivacy = await readFile("src/pages/lithobreak-outpost/privacy.astro", "utf8");
+const outpostDeletion = await readFile("src/pages/lithobreak-outpost/delete-account.astro", "utf8");
+const outpostTerms = await readFile("src/pages/lithobreak-outpost/terms.astro", "utf8");
 const terms = await readFile("src/pages/terms.astro", "utf8");
 const header = await readFile("src/components/SiteHeader.astro", "utf8");
 const layout = await readFile("src/layouts/BaseLayout.astro", "utf8");
@@ -144,13 +148,33 @@ if (!privacy.includes("not consent for LithoBreak development updates or RaceCar
 if (!privacy.includes("Google Analytics 4") || !privacy.includes("data-analytics-reset")) {
   fail("privacy page must explain Google Analytics and expose consent controls");
 }
-if (privacy.includes('/lithobreak-outpost/privacy/') || home.includes('/lithobreak-outpost/privacy/')) {
+if ([privacy, terms, home, header, sitemap].some((source) => source.includes('/lithobreak-outpost/'))) {
   fail("Outpost review draft must stay out of public site navigation");
 }
 for (const marker of ["LithoBreak: Outpost", "TauCetiLabs", "site.brand.contactEmail", "performance reports", "Android backup", 'robots="noindex"', "Draft for owner review"]) {
   if (!outpostPrivacy.includes(marker)) {
     fail(`Outpost privacy draft missing ${marker}`);
   }
+}
+for (const [page, source] of [["privacy", outpostPrivacy], ["delete-account", outpostDeletion], ["terms", outpostTerms]]) {
+  if (!source.includes('robots="noindex"') || !source.includes("Draft for owner review")) {
+    fail(`Outpost ${page} must retain its review notice and noindex`);
+  }
+  for (const peer of ["privacy", "delete-account", "terms"].filter((name) => name !== page)) {
+    if (!source.includes(`/lithobreak-outpost/${peer}/`)) fail(`Outpost ${page} must link to ${peer}`);
+  }
+}
+for (const obsoleteClaim of ["has no player accounts", "does not send saved progress", "backgrounding freezes every factory"]) {
+  if (outpostPrivacy.toLowerCase().includes(obsoleteClaim)) fail(`obsolete Outpost privacy claim: ${obsoleteClaim}`);
+}
+for (const marker of ["Unity Authentication", "Unity Player Account", "offline_access", "without the email scope", "Engineer alias", "cloud campaign backups", "Retention is undecided", "No automatic time-based retention", "not automatically upload your campaign"]) {
+  if (!outpostPrivacy.includes(marker)) fail(`Outpost privacy missing connected disclosure: ${marker}`);
+}
+for (const marker of ["site.brand.contactEmail", "without having the app installed", "alias alone is not proof", "does not automatically delete data", "https://player-account.unity.com/delete-account", "unity-player-login-privacy@unity3d.com"]) {
+  if (!outpostDeletion.includes(marker)) fail(`Outpost deletion draft missing: ${marker}`);
+}
+if (!outpostTerms.includes("five-day event") || !outpostTerms.includes("no effective date")) {
+  fail("Outpost terms must preserve the unapproved event and terms boundary");
 }
 if (!subscribeApi.includes("TauCetiSubscriberContacts") || !subscribeApi.includes("taucetilabs_general_updates") || !subscribeApi.includes("SENDGRID_TAUCETILABS_LIST_ID")) {
   fail("subscribe API must use shared contacts, company consent scope, and SendGrid list setting");
@@ -182,7 +206,7 @@ for (const url of [
     fail(`sitemap missing ${url}`);
   }
 }
-if (sitemap.includes("https://www.taucetilabs.com/lithobreak-outpost/privacy/")) {
+if (sitemap.includes("https://www.taucetilabs.com/lithobreak-outpost/")) {
   fail("Outpost review draft must stay out of the sitemap");
 }
 if (!robots.includes("Sitemap: https://www.taucetilabs.com/sitemap.xml")) {

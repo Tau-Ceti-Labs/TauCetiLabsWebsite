@@ -1,0 +1,42 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SiteHeader from "../../components/SiteHeader.astro";
+import site from "../../content/site.json";
+---
+
+<BaseLayout
+  title={`LithoBreak: Outpost Internal Test Terms | ${site.brand.name}`}
+  description="Proposed terms for the LithoBreak: Outpost connected internal test, pending owner approval."
+  robots="noindex"
+>
+  <SiteHeader />
+  <main class="page-main">
+    <section class="page-hero">
+      <p class="eyebrow">LithoBreak: Outpost</p>
+      <h1>Internal test terms</h1>
+      <p><strong>Draft for owner review.</strong> This is a proposed destination for Outpost's internal-test terms. It has no effective date, does not ask you to accept an agreement, and must be approved before use in the sign-in provider or test onboarding.</p>
+      <nav aria-label="Outpost policy pages">
+        <p><a href="/lithobreak-outpost/privacy/">Game privacy policy</a> · <a href="/lithobreak-outpost/delete-account/">Account and data deletion</a></p>
+      </nav>
+    </section>
+    <section class="text-section" aria-label="Proposed Outpost internal test terms">
+      <h2>About this test</h2>
+      <p><strong>Tau Ceti Labs</strong> develops LithoBreak: Outpost. This connected internal test is intended for approved testers, with accounts, optional cloud campaign backup and recovery, and connected Survey Works. The current service uses manual development enrollment. It is an experimental service, and test access and feature availability need to be confirmed for the build you receive.</p>
+
+      <h2>Accounts and fair participation</h2>
+      <p>Use your own Unity Player Account for recoverable connected play, keep your sign-in credentials private, and report account-access problems to Tau Ceti Labs. Do not attempt to access another player's account, bypass test enrollment or submit manipulated event commands or scores. Unity's own account terms apply to its sign-in service.</p>
+
+      <h2>Campaign, backup and event boundaries</h2>
+      <p>Your campaign and local practice are stored locally. The campaign can advance for elapsed time while you are away. Choosing a cloud backup uploads a campaign file; restoring one replaces the active local campaign after retaining the existing branch. Backups do not continuously synchronize inventories or make campaign progress server-verified.</p>
+      <p>Connected Survey Works uses server-verified event state and scores. One device controls event edits at a time, and moving control requires an explicit action. Accepted event work can continue while you are away, subject to the event's closing time. Event attempts, rankings and reward receipts are separate from the local campaign.</p>
+
+      <h2>Schedule and test expectations</h2>
+      <p>A new, separate five-day event is planned. Its activation dates, final service setup and participant instructions have not been finalized. No public recurring schedule, future reward program or long-term service availability is promised by this draft. The earlier development event's dates are not the new test schedule.</p>
+      <p>Test builds may contain defects or require updates. Before the next event, Tau Ceti Labs needs to confirm the schedule, any test-data reset or preservation rules, and the support and deletion process. This draft does not authorize a data reset or establish a retention period.</p>
+
+      <h2>Privacy, support and approval</h2>
+      <p>Read the <a href="/lithobreak-outpost/privacy/">Outpost privacy draft</a> for account, event and backup data practices, and the <a href="/lithobreak-outpost/delete-account/">account and data-deletion page</a> for requests and current limitations. Support is available by email at <a href={`mailto:${site.brand.contactEmail}`}>{site.brand.contactEmail}</a>; handling times remain undecided.</p>
+      <p>The company's <a href="/terms/">website terms</a> cover the website. These proposed Outpost terms require separate owner review, a final effective date and confirmation of the test arrangements before publication or use.</p>
+    </section>
+  </main>
+</BaseLayout>
