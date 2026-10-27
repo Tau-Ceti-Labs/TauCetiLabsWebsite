@@ -1,6 +1,6 @@
 # LithoBreak: Outpost connected-test policy review
 
-Status: local owner-review draft, updated 2026-10-26 after Chris approved the retention schedule and manual deletion process and named himself as initial handler. Those policy decisions are approved; operational implementation, validation, final effective wording and publication remain pending. No merge, push, public preview, production deployment, provider configuration or Play Console change is authorized by this outcome. The previous offline policy draft is already live; its claims are superseded by the connected implementation and must be reconciled before use for the next test.
+Status: owner-review draft, updated 2026-10-26 after Chris approved the retention schedule/manual deletion process and then authorized completing mobile validation and opening a draft PR for review. Branch push and the normal Azure PR preview are now authorized. Final policy activation, merge, production deployment, provider configuration and Play Console changes remain outside this authorization. The previous offline policy draft is already live; its claims are superseded by the connected implementation and must be reconciled before use for the next test.
 
 ## Scope and owner decisions
 
@@ -12,6 +12,7 @@ Status: local owner-review draft, updated 2026-10-26 after Chris approved the re
 - Chris subsequently approved the recommended schedule: account recovery for up to 12 months of player inactivity; event details for 90 days after closure; latest and previous cloud backups with older/orphaned files removed within 30 days; developer-controlled logs for 30 days; support emails for 12 months after closure and attachments for 90 days; minimal completion records for 12 months. Full-service retirement starts a 30-day removal window unless the tester chooses migration; the earlier account expiry controls. Valid earlier deletion requests override ordinary retention. The former tentative one-year minimum is superseded: the 12-month account window is a maximum ordinary inactivity period, not a minimum hold.
 - Chris approved manual handling through the confirmed mailbox, with himself as initial handler, acknowledgment within three business days and a 30-calendar-day completion target measured from original receipt, including ownership checks. Verification uses the established tester-enrollment contact mapped to the exact account; no assumed provider-email match. A lost-access route must not require reinstallation. A trusted backup handler for absences remains to be designated.
 - The approved operational procedure, complete schedule, exception boundaries and acceptance checks are recorded in the [game/service handoff](lithobreak-outpost-connected-game-handoff.md). This approval does not establish that deletion, cleanup, mailbox routines, expiry tracking or enrollment-contact mapping are implemented, or approve publication.
+- Chris subsequently authorized the remaining mobile checks and a draft PR for review, including its normal branch push and Azure review preview. That review authorization does not activate the policy or approve merge/production deployment.
 - Accounts, explicit cloud campaign backup/recovery and connected Survey Works are intended for all approved internal testers. The currently implemented service still uses manual development enrollment. A **separate five-day event** is approved in principle; activation dates and final service implementation remain undecided. The old event calendar must not be reused as the new calendar.
 
 ## Draft routes
@@ -22,7 +23,7 @@ Status: local owner-review draft, updated 2026-10-26 after Chris approved the re
 | `/lithobreak-outpost/delete-account/` | Prominent email request pathway, approved manual process and separate Unity provider pathway | Draft; handler/process approved, complete service deletion and validation still pending |
 | `/lithobreak-outpost/terms/` | Proposed product-specific internal-test Terms destination | Draft; no effective date or acceptance mechanism; not configured in Unity |
 
-All three pages visibly say they are drafts and use `noindex`. They link to each other, remain outside company navigation and the sitemap, and use the existing site layout and separate website-analytics notice. `noindex` is not access control: any later publicly hosted preview would be accessible by URL and needs Chris's approval. The company `/privacy/` and `/terms/` remain website-specific.
+All three pages visibly say they are drafts and use `noindex`. They link to each other, remain outside company navigation and the sitemap, and use the existing site layout and separate website-analytics notice. `noindex` is not access control: a publicly hosted preview is accessible by URL. Chris has now authorized the draft-PR review preview. The company `/privacy/` and `/terms/` remain website-specific.
 
 ## Source and implementation evidence
 
@@ -70,7 +71,7 @@ Read-only HTTPS checks on 2026-10-26:
 | Scope and consequences | Whole Outpost account and associated connected data/support correspondence, backups-only or support-only; local saves remain; fresh approval before deleted tester re-enrolls; case-only completion record | Approved; implement write/settlement coordination and verify cached sessions cannot recreate data; any specific justified exception needs purpose/expiry and requester explanation |
 | Terms and audience | Approve proposed internal-test rules; confirm participant eligibility/age and applicable Unity account requirements; test-data reset/preservation rules and test instructions | Proposed only; no agreement accepted or provider Terms URL changed |
 | New event | Separate event identity/calendar, approved-tester enrollment, final service configuration and verified rules | Separate game/service outcome; no dates announced |
-| Publication | Final text, effective date, removal of unresolved notices, allowed discoverability, preview/public deployment and store/provider URLs | Explicit approval required; none granted here |
+| Publication | Draft PR and Azure review preview; final effective wording/date, notice removal, discoverability and store/provider URLs | Draft PR/preview authorized; policy activation, merge and production deployment still require explicit approval |
 
 The pages distinguish approved policy decisions from unimplemented or unvalidated service behavior. They must not be represented as a finished effective privacy policy, working deletion service or store-policy certification. Do not revert the approved decisions to "undecided" merely because implementation remains open.
 
@@ -110,13 +111,28 @@ Initial-draft validation on 2026-10-26, committed as `8028f4f` before the retent
 - No new phone-width validation was performed in this revision. The initial Terms 390-pixel pass remains historical; privacy/deletion mobile and 320-pixel coverage still need completion before publication. Terms was checked in the build/generated HTML for the updated approved-policy wording and links.
 - Local preview only; no public preview, push, PR, merge, production deployment, game-project edit, provider configuration or Play Console change. The preview process and task-created browser tab were closed after review.
 
-Before publication:
+### Completed mobile review and draft-PR authorization, 2026-10-26
+
+This pass supersedes the earlier incomplete-mobile notes. The final `a1c7859` page sources were reviewed in Chrome's actual responsive browser mode at **390 × 844** and **320 × 844** CSS pixels. This is browser emulation, not an Android hardware playtest. The visible device toolbar records dimensions; its display zoom was Fit to window. No layout or content repair was needed.
+
+| Page | 390-pixel review | 320-pixel review |
+| --- | --- | --- |
+| Privacy | Title/draft notice, navigation, package identifier, retention anchor below sticky header, account/event/backup/log/support windows and lower contact/local-data wording | Same principal layout areas; long identifier and links remained within the readable column, retention heading cleared the sticky header |
+| Account/data deletion | Title/draft notice, request email, process, acknowledgment/verification/completion targets, provider-account distinction and full Unity privacy-support address | Same principal layout areas; long provider email wrapped within the column and local-save/provider-backup wording remained readable |
+| Internal-test Terms | Current title, review notice, navigation and introductory test wording | Current title/navigation plus lower support commitments, policy links and review/approval boundary |
+
+- Saved the captures and their hashes in [mobile-review.json](evidence/outpost-connected-policy/mobile-review.json). Representative captures: [privacy retention at 320](evidence/outpost-connected-policy/privacy-mobile-320-retention.jpg), [privacy retention at 390](evidence/outpost-connected-policy/privacy-mobile-390-retention.jpg), [deletion timing at 320](evidence/outpost-connected-policy/deletion-mobile-320-timing.jpg), [provider email at 320](evidence/outpost-connected-policy/deletion-mobile-320-provider.jpg), and [current Terms at 320](evidence/outpost-connected-policy/terms-mobile-320-top.jpg). Earlier screenshot files remain explicitly historical.
+- No horizontal clipping or overlapping text was observed in the inspected areas. The privacy-to-deletion navigation was observed in the mobile browser; the retention anchor was reached at both widths. Mailto/provider destinations were inspected without sending email, signing in or requesting deletion. Markup target/anchor checks remain in the approved route report.
+- The local preview HTML matched all three approved build hashes before inspection. The final `npm.cmd run build` passed again (nine pages; zero type errors/warnings, same existing API hint); static verification, existing API tests and whitespace checks passed. The mobile report checks final built HTML against the approved hashes and records evidence integrity. Only documentation and review evidence changed in this pass.
+- Chris has authorized pushing the branch, opening a **draft PR**, and the normal Azure review preview. PR URL, CI and preview results are tracked in the PR description and closeout. Keep the PR draft; policy activation, merge, production deployment and game/provider/Play actions remain separate approvals/outcomes.
+
+Before final policy activation and production publication:
 
 1. Preserve the approved schedule/process, resolve the remaining audience/test/backup-handler decisions and reconcile page text with actual handling capabilities. Approve final effective wording/date.
 2. Complete the [game/service handoff](lithobreak-outpost-connected-game-handoff.md), including deletion and request verification, exact test artifact/SDK/network and Android backup checks. Update disclosures to match evidence.
-3. Obtain Chris's approval before a push/PR that creates a publicly accessible preview. Follow the normal focused branch, PR checks and Azure preview workflow; review the three pages and company-page boundaries there.
+3. Use Chris's draft-PR/preview authorization to follow the focused branch, PR checks and Azure review-preview workflow. Review the three pages and company-page boundaries there; the PR description records its current URL, checks and preview status. This does not authorize policy activation or merge.
 4. Merge/deploy production only after explicit approval. Verify all three live pages by content as well as HTTP status, canonical metadata, request email, provider links and mobile layout. Then allow the game owner to update provider and Play URLs and the in-app links.
 
 ## Historical context
 
-Chris approved a clearly marked direct-access offline policy draft on 2026-10-13. It was delivered through the previous `agent/outpost-privacy-public-draft` branch and is now on `main` via PR #4. Its final-bundle/Android-backup/support-retention audit was never a connected-service audit. The current task replaces that obsolete offline wording locally; the earlier publication permission does not authorize this task's connected-policy publication.
+Chris approved a clearly marked direct-access offline policy draft on 2026-10-13. It was delivered through the previous `agent/outpost-privacy-public-draft` branch and is now on `main` via PR #4. Its final-bundle/Android-backup/support-retention audit was never a connected-service audit. The connected replacement is now authorized for draft-PR/preview review under a separate instruction; neither the earlier permission nor the review authorization approves final policy activation or production publication.

@@ -4,12 +4,12 @@ Updated 2026-10-26 after Chris explicitly approved the recommended retention sch
 
 ## Website destinations and approval boundary
 
-- Privacy: `https://www.taucetilabs.com/lithobreak-outpost/privacy/` — the live page still serves the old offline review draft; the connected replacement with approved retention is local only.
-- App account/data deletion: `https://www.taucetilabs.com/lithobreak-outpost/delete-account/` — local draft with approved process; complete fulfillment is not yet validated or publicly available.
-- Internal test Terms: `https://www.taucetilabs.com/lithobreak-outpost/terms/` — local draft only, linked to the approved schedule/process; no effective date or accepted agreement.
+- Privacy: `https://www.taucetilabs.com/lithobreak-outpost/privacy/` — production still serves the old offline review draft; the connected replacement with approved retention is on the review branch.
+- App account/data deletion: `https://www.taucetilabs.com/lithobreak-outpost/delete-account/` — review draft with approved process; no production request page or validated complete fulfillment is claimed.
+- Internal test Terms: `https://www.taucetilabs.com/lithobreak-outpost/terms/` — review draft linked to the approved schedule/process; no effective date or accepted agreement.
 - Initial handler: **Chris**, through **team@taucetilabs.com**. A trusted backup handler for absences still needs to be designated.
 
-Do not configure these proposed destinations in Unity or Play until final effective wording is accepted and the website task confirms the live pages. Schedule/process approval is not publication approval. Do not reuse the previous development event dates for the separate new five-day test.
+Do not configure these proposed destinations in Unity or Play until final effective wording is accepted and the website task confirms the live pages. Chris subsequently authorized completed mobile checks and a draft PR with its Azure review preview; this does not approve final policy activation, merge or production deployment. Do not reuse the previous development event dates for the separate new five-day test.
 
 ## Approved retention schedule
 
