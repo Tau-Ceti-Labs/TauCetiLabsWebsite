@@ -6,7 +6,7 @@ import site from "../../content/site.json";
 
 <BaseLayout
   title={`LithoBreak: Outpost Privacy Policy | ${site.brand.name}`}
-  description="Privacy policy draft for the LithoBreak: Outpost Android game."
+  description="Owner-review privacy draft for LithoBreak: Outpost, including accounts, optional cloud campaign backups and connected Survey Works."
   robots="noindex"
 >
   <SiteHeader />
@@ -14,28 +14,64 @@ import site from "../../content/site.json";
     <section class="page-hero">
       <p class="eyebrow">LithoBreak: Outpost</p>
       <h1>Privacy policy</h1>
-      <p><strong>Draft for owner review.</strong> The final Android release bundle and backup behavior still need verification before this policy is used in Google Play.</p>
+      <p><strong>Draft for owner review.</strong> The retention schedule and manual deletion process are owner-approved. Service implementation, an end-to-end deletion check and final publication review are still pending. This draft is not an effective final policy or approved for Google Play use.</p>
+      <nav aria-label="Outpost policy pages">
+        <p><a href="/lithobreak-outpost/delete-account/">Account and data deletion</a> · <a href="/lithobreak-outpost/terms/">Internal test terms</a></p>
+      </nav>
     </section>
     <section class="text-section" aria-label="LithoBreak: Outpost privacy policy">
       <p>This policy describes the Android game <strong>LithoBreak: Outpost</strong> (package <code>com.taucetilabs.lithobreakoutpost</code>). The developer appears on Google Play as <strong>TauCetiLabs</strong>. The company responsible for the game is <strong>Tau Ceti Labs</strong>, its registered legal name.</p>
 
-      <h2>Data the game stores on your device</h2>
-      <p>The current game saves your progress and gameplay settings in its app storage so that you can continue playing. It also writes local performance reports to help diagnose how the game runs. Those reports include the game and Unity versions, device model, operating system, graphics processor, screen dimensions, and frame and simulation timing. These files stay in the app's storage unless Android backup or device transfer includes them.</p>
+      <h2>Your local campaign and practice</h2>
+      <p>Your campaign, gameplay settings and local Survey Works practice are stored on your device. Campaign progress can advance for elapsed time while you are away; that calculation does not make your campaign a server-hosted game. Local practice is separate from the connected event and its leaderboard.</p>
+      <p>The game also writes local performance reports containing the game and Unity versions, device model, operating system, graphics processor, screen dimensions, and frame and simulation timing. The reviewed game code does not automatically upload those reports. If you send us a report for support, we receive the information it contains.</p>
 
-      <h2>Data sent from the game</h2>
-      <p>The current prototype has no player accounts, advertising, in-app purchases, online multiplayer, or player chat. Its authored game code does not send saved progress or performance reports to a Tau Ceti Labs server. Unity analytics, advertising, purchasing, and cloud diagnostic services are disabled in the current project configuration. We are checking the final release bundle, including native engine and platform behavior, before making a final statement about data collection or sharing.</p>
+      <h2>Connecting and signing in</h2>
+      <p>When you choose to connect, the game uses Unity Authentication to create or resume a game-service identity. Linking or recovering a Unity Player Account completes sign-in through Unity's browser-based service. Outpost does not collect your account password. The current client requests sign-in and continuing-access permissions (<code>openid</code> and <code>offline_access</code>), without the email scope; it does not request your email address from the sign-in provider. Unity may collect account information directly as part of its own sign-in service.</p>
+      <p>The game and connected service use a Unity player identifier and account-link status to recognize the account, recover connected progress and associate backups. The game stores a randomly generated installation identifier and pending request records locally; it sends the installation identifier with connected requests so that the service can manage which device controls an event factory. Unity's sign-in services also manage cached credentials needed to resume access.</p>
 
-      <h2>Android backup and platform services</h2>
-      <p>If backup or device transfer is enabled on your Android device, the platform may copy eligible app data according to your device and account settings. The final game's backup eligibility has not yet been verified. Google Play and Android handle their own platform data under their applicable privacy policies and settings.</p>
+      <h2>Connected Survey Works and its leaderboard</h2>
+      <p>The connected service stores account-linked event attempts, accepted command history and factory checkpoints, request times and retry receipts, device-control records, verified scores and reward-grant receipts. These records let the service validate event gameplay, resume accepted work, manage device handover, rank results and avoid duplicate rewards. They are separate from your local campaign economy.</p>
+      <p>The development leaderboard displays a generated <strong>Engineer alias</strong>, rank and verified best score to other participants who can access the board. The alias is linked to your game-service identifier; it is a pseudonym, not a guarantee of anonymity. The reviewed game interface does not display your sign-in email or password on the board.</p>
+      <p>The current service uses a manually enrolled development environment. Accounts, optional backups and connected Survey Works are intended for approved internal testers. A separate five-day test event is planned, but its activation dates and service setup are not final. This page does not announce an active event or a public recurring event schedule.</p>
+
+      <h2>Optional cloud campaign backups</h2>
+      <p>Choosing <strong>Back up this campaign</strong> uploads a campaign save file to Unity Cloud Save under your game-service account. A server record tracks its file reference, checksum, size, revision and save time, together with current and previous backup references. Campaign backups are explicit uploads; connecting an account alone does not automatically upload your campaign.</p>
+      <p>Recovery offers the cloud backup separately. If you choose to restore it, the game retains a separate copy of the current local campaign before replacing it. Inventories are not merged. Backup and recovery do not provide continuous synchronization or server validation of the campaign economy. Older uploaded files may remain stored: the reviewed implementation has no automatic backup-file cleanup policy.</p>
+
+      <h2>Service providers, platform data and website analytics</h2>
+      <p>Unity provides Player Accounts, Authentication, Cloud Code, Cloud Save and Leaderboards for the connected features. Account and gameplay data described above is processed through those services. Their infrastructure also processes connection and operational data needed to deliver the service. See Unity's <a href="https://unity.com/legal/game-player-and-app-user-privacy-policy">Game Player and App User Privacy Policy</a> and <a href="https://docs.unity.com/en-us/authentication/privacy-and-consent/data-privacy-unity-player-accounts">Player Accounts privacy information</a> for its practices.</p>
+      <p>The current game has no implemented advertising, in-app purchases or player chat. Unity Analytics, advertising and cloud diagnostic reporting are disabled in the reviewed project configuration. That setting does not disable the connected services described here or establish that their SDKs and infrastructure collect no operational data. The exact internal-test release still needs a packaged-SDK, permissions and network review.</p>
+      <p>If Android backup or device transfer is enabled, the platform may copy eligible app data under your device and account settings. Eligibility for the internal-test release remains to be verified. This platform backup is separate from Outpost's explicit cloud campaign backup. Google Play and Android handle their own platform data under their applicable policies.</p>
+      <p>This website has its own optional Google Analytics and update form, described on the <a href="/privacy/">company website privacy page</a>. Your website analytics choice does not enable in-game Unity Analytics or control account and event processing.</p>
 
       <h2>If you contact us</h2>
-      <p>If you email <a href={`mailto:${site.brand.contactEmail}`}>{site.brand.contactEmail}</a> for support or a privacy question, we receive the email address, message, and any information you choose to include. Our email provider processes messages to deliver and store them. We use this correspondence to respond to your request and troubleshoot the issue. We keep it as needed for support and ordinary business records, subject to applicable legal obligations. Contact us at the same address to ask about or request deletion of your correspondence.</p>
+      <p>If you email <a href={`mailto:${site.brand.contactEmail}`}>{site.brand.contactEmail}</a> for support, access to your data or deletion, we receive your email address, message and any information or attachments you include. Our email provider processes messages to deliver and store them. We use this correspondence to understand and respond to your request. The approved retention schedule below covers support messages and attachments. Do not send passwords, sign-in codes or access tokens.</p>
 
-      <h2>Security, retention, and deletion</h2>
-      <p>Game saves and performance reports are stored in Android app storage. Clearing the app's storage or uninstalling the game removes the local copies; a device or cloud backup may need separate deletion through your backup provider. We limit access to support correspondence to people handling the request and the services needed to deliver and store email. The exact retention period for support correspondence remains subject to owner review.</p>
+      <h2>Security</h2>
+      <p>The connected service uses authenticated access and server-controlled event records. Backup downloads are checked against their recorded size and checksum before restoration. These controls do not guarantee that data can never be lost or accessed improperly.</p>
+
+      <h2 id="retention">Approved retention schedule</h2>
+      <p>The following schedule is approved for the connected internal test. It still requires operational implementation and validation before this policy takes effect. These periods are maximum ordinary retention windows, not minimum waiting periods before we can act on a deletion request.</p>
+      <p><strong>Outpost account, enrollment and minimum reward-grant receipts:</strong> retain while actively used, then for up to <strong>12 months after the last player-initiated connected activity</strong>. Automated event settlement does not restart that inactivity clock. If the entire internal-test service is retired, remove remaining records within <strong>30 days of retirement</strong>, unless the tester chooses to migrate to a successor test. The earlier applicable expiry controls.</p>
+      <p><strong>Detailed Survey Works event records:</strong> retain command history, factory checkpoints, request receipts, scores and leaderboard aliases for <strong>90 days after that event closes</strong>, or remove them earlier when account deletion is fulfilled. After that window, retain only the minimum reward-grant receipt needed for the account under its own retention window. Closing a five-day event does not immediately end the separate cloud campaign recovery window.</p>
+      <p><strong>Cloud campaign backups:</strong> retain the latest successful backup and immediately previous backup while the account remains within its recovery window. Remove superseded and orphaned uploads within <strong>30 days</strong>. Remove all uploaded versions and their metadata when account deletion is fulfilled or the account reaches its applicable expiry.</p>
+      <p><strong>Diagnostic logs and exports controlled by Tau Ceti Labs:</strong> retain for <strong>30 days</strong>. If a specific unresolved support issue requires a relevant extract, handle that extract under the support-attachment schedule below. Unity documents a <a href="https://docs.unity.com/en-us/cloud-code/logging/overview">seven-day retention window for its Cloud Code logging service</a>. That window does not establish the retention period for every Unity infrastructure record; other provider-controlled records follow the provider's applicable practices.</p>
+      <p><strong>Support messages and attachments:</strong> retain support emails for <strong>12 months after the issue closes</strong>, and remove uploaded saves and diagnostic attachments within <strong>90 days of closure</strong>. A valid earlier deletion request overrides ordinary retention, subject to a specific justified exception.</p>
+      <p><strong>Minimal deletion-completion record:</strong> retain the case number, dates, scope and outcome for <strong>12 months after completion</strong>. We will not retain the full request, save files, account identifiers or email address merely to prove completion. Any specific justified retention exception must have a documented purpose and expiry, with the relevant details explained to the requester.</p>
+
+      <h2>Manual deletion requests</h2>
+      <p>Use the <a href="/lithobreak-outpost/delete-account/">account and data-deletion request page</a> to contact Tau Ceti Labs about your Outpost app account and associated data. Chris is the initial handler through <a href={`mailto:${site.brand.contactEmail}`}>{site.brand.contactEmail}</a>. The approved process aims to acknowledge requests within <strong>three business days</strong> and complete them within <strong>30 calendar days of receipt</strong>, including ownership checks within that period. If verification or provider handling remains unresolved, we will explain the status before that deadline. Any shorter applicable legal deadline takes precedence.</p>
+      <p><strong>Current implementation limit:</strong> no automatic time-based retention or complete account/data-deletion workflow is implemented in the reviewed development service. The approved manual process and cleanup procedures must be implemented and tested before they are described as operational. Event closure, signing out and uninstalling do not automatically remove account records, event history, leaderboard records or uploaded backups.</p>
+      <p>Full account deletion covers associated connected data and support correspondence under our control, subject to a specific justified retention exception and the limited completion record above. It does not silently erase your local campaign or practice files. Clearing Android app storage or uninstalling removes local app copies; any Android/provider backups need separate handling. Restoring an old backup may bring local data back. Unity Player Account deletion has its own separate pathway, described on the request page.</p>
 
       <h2>Updates and contact</h2>
-      <p>We will update this policy when the game's data practices change. For questions about LithoBreak: Outpost privacy, email <a href={`mailto:${site.brand.contactEmail}`}>{site.brand.contactEmail}</a>. The <a href="/privacy/">company website privacy page</a> separately describes data practices when you browse this website or submit its update form.</p>
+      <p>For questions about LithoBreak: Outpost privacy or your data, email <a href={`mailto:${site.brand.contactEmail}`}>{site.brand.contactEmail}</a>. The approved schedule and process require implementation evidence, final wording review, an effective date and publication approval before this draft becomes the published policy for the connected test.</p>
     </section>
   </main>
 </BaseLayout>
+
+<style>
+  code { overflow-wrap: anywhere; }
+  #retention { scroll-margin-top: 10rem; }
+</style>

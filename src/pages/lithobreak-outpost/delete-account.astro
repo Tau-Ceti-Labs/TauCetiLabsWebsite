@@ -1,0 +1,52 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SiteHeader from "../../components/SiteHeader.astro";
+import site from "../../content/site.json";
+
+const deletionEmail = `mailto:${site.brand.contactEmail}?subject=${encodeURIComponent("LithoBreak: Outpost account and data deletion request")}`;
+---
+
+<BaseLayout
+  title={`LithoBreak: Outpost Account and Data Deletion | ${site.brand.name}`}
+  description="Owner-review account and data-deletion request pathway for LithoBreak: Outpost."
+  robots="noindex"
+>
+  <SiteHeader />
+  <main class="page-main">
+    <section class="page-hero">
+      <p class="eyebrow">LithoBreak: Outpost</p>
+      <h1>Account and data deletion</h1>
+      <p><strong>Draft for owner review.</strong> The retention schedule and manual deletion process are owner-approved, with Chris as the initial handler. Service implementation, an end-to-end deletion check and final publication review remain pending. Sending an email does not automatically delete data.</p>
+      <nav aria-label="Outpost policy pages">
+        <p><a href="/lithobreak-outpost/privacy/">Game privacy policy</a> · <a href="/lithobreak-outpost/terms/">Internal test terms</a></p>
+      </nav>
+    </section>
+    <section class="text-section" aria-label="Outpost deletion request instructions">
+      <h2>Request deletion from Tau Ceti Labs</h2>
+      <p>For <strong>LithoBreak: Outpost</strong>, developed by <strong>Tau Ceti Labs</strong> (shown on Google Play as <strong>TauCetiLabs</strong>), contact <a href={deletionEmail}>{site.brand.contactEmail}</a> with the subject <strong>LithoBreak: Outpost account and data deletion request</strong>. You can send the request without having the app installed.</p>
+      <p>Say whether you want to delete your Outpost app account and associated connected data, only your cloud campaign backups, or support correspondence. If you want access to your data or are unsure which data exists, explain that in the same email.</p>
+      <p>You may include the Engineer alias shown in the game to help locate the request. An alias alone is not proof of account ownership. If you cannot sign in or find your alias, describe that problem instead. Do not send passwords, sign-in codes, access tokens or a full campaign save with your initial request.</p>
+
+      <h2>Approved manual handling process</h2>
+      <p>Chris at Tau Ceti Labs is the initial request handler through <a href={deletionEmail}>{site.brand.contactEmail}</a>. The approved process below must be implemented and validated before this draft takes effect.</p>
+      <p><strong>Acknowledgment:</strong> we aim to reply within <strong>three business days</strong> with a case number and confirmation of the requested scope. Whole-account deletion removes connected event progress, leaderboard presence and cloud campaign recovery.</p>
+      <p><strong>Ownership verification:</strong> we will use the trusted contact associated with the exact game-service account during tester enrollment. An email address supplied only in a deletion request or an Engineer alias alone does not prove ownership. Outpost does not request the sign-in provider's email scope, so the sender's address cannot simply be assumed to match a Unity account. If you have lost access or no longer have the app, explain that in your email so the handler can arrange manual verification without requiring reinstallation.</p>
+      <p><strong>Deletion and timing:</strong> we aim to complete the request within <strong>30 calendar days of receiving it</strong>, including ownership checks within that period. The clock does not restart when verification finishes. If verification or provider handling remains unresolved, we will explain the status before that deadline. Any shorter applicable legal deadline takes precedence.</p>
+      <p><strong>Completion:</strong> we will send a message explaining what was removed, any specifically justified retained record and its expiry, and any separate provider action needed. We will retain only a minimal completion record for <strong>12 months</strong>: case number, dates, scope and outcome. We will not retain the full request, save files, account identifiers or email address merely to prove completion.</p>
+
+      <h2>Data covered and current limits</h2>
+      <p>A full Outpost account-deletion request covers the game-service identity and its associated account-linked event attempts, command history and checkpoints, device-control records, scores and Engineer alias on the leaderboard, reward-grant receipts, all uploaded campaign backups and their metadata, and associated support correspondence under our control. A specifically justified retention exception must have a documented purpose and expiry explained to you.</p>
+      <p><strong>Current implementation limit:</strong> the reviewed development service does not yet implement a complete account/data-deletion workflow or automatic retention schedule. We still need to complete and test the administrator procedure that removes this data and prevents it from being recreated. This page does not claim that procedure has already passed validation.</p>
+      <p>Event closure, disconnecting a device, signing out, or uninstalling the game does not delete the connected account and its stored data. Current and previous backup references are tracked, but older uploaded files may also remain. A complete deletion process must cover those files as well.</p>
+      <p>The <a href="/lithobreak-outpost/privacy/#retention">approved retention schedule</a> sets the ordinary expiry periods. A valid deletion request can remove data sooner; the ordinary periods are not a minimum hold. After whole-account deletion, fresh developer approval is required before re-enrollment in the internal test.</p>
+
+      <h2>Your Unity Player Account is separate</h2>
+      <p>Unity operates the Player Account used for browser sign-in, which may be used with other games. To request deletion of that provider account, use <a href="https://player-account.unity.com/delete-account">Unity Player Account deletion</a>. For access to that account's data or other provider privacy requests, contact <a href="mailto:unity-player-login-privacy@unity3d.com">unity-player-login-privacy@unity3d.com</a>.</p>
+      <p>Unity Player Account deletion does not itself delete data held by integrated games and services. Contact Tau Ceti Labs separately about Outpost data. Similarly, requesting deletion from Outpost is not a request to delete your wider Unity Player Account. See <a href="https://docs.unity.com/en-us/authentication/privacy-and-consent/data-privacy-unity-player-accounts">Unity's Player Accounts privacy information</a>.</p>
+
+      <h2>Local saves and platform backups</h2>
+      <p>Your local campaign and local practice files are separate from connected event records. Clearing the app's Android storage or uninstalling removes the local app copies. Cloud campaign backups and Android or device-provider backups require separate handling; restoring a backup may restore local data. Keep any local progress you wish to preserve before clearing app storage.</p>
+      <p>The <a href="/lithobreak-outpost/privacy/">Outpost privacy draft</a> describes the data used by each feature. This request page requires successful service validation, final wording review and publication approval before use as the connected test's effective deletion resource or a Google Play deletion destination.</p>
+    </section>
+  </main>
+</BaseLayout>

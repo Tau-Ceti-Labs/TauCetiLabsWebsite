@@ -1,0 +1,57 @@
+{
+  "date": "2026-10-26",
+  "environment": "Local Astro static build; not deployed",
+  "result": "pass",
+  "pages": [
+    {
+      "page": "privacy",
+      "file": "dist/lithobreak-outpost/privacy/index.html",
+      "canonical": "https://www.taucetilabs.com/lithobreak-outpost/privacy",
+      "robots": "noindex",
+      "draftNotice": true,
+      "internalLinks": [
+        "/",
+        "/about/",
+        "/press/",
+        "/lithobreak-outpost/delete-account/",
+        "/lithobreak-outpost/terms/",
+        "/privacy/"
+      ],
+      "sha256": "16a7a66dedb97813603fafa1a02a668796e7bf4f026c79ff7e28e3fd2bf05cf4"
+    },
+    {
+      "page": "delete-account",
+      "file": "dist/lithobreak-outpost/delete-account/index.html",
+      "canonical": "https://www.taucetilabs.com/lithobreak-outpost/delete-account",
+      "robots": "noindex",
+      "draftNotice": true,
+      "internalLinks": [
+        "/",
+        "/about/",
+        "/press/",
+        "/lithobreak-outpost/privacy/",
+        "/lithobreak-outpost/terms/",
+        "/privacy/"
+      ],
+      "sha256": "5be404781f0cdd3992891035d3630ab0ab07ea86551dee6dd186c5891e88085c"
+    },
+    {
+      "page": "terms",
+      "file": "dist/lithobreak-outpost/terms/index.html",
+      "canonical": "https://www.taucetilabs.com/lithobreak-outpost/terms",
+      "robots": "noindex",
+      "draftNotice": true,
+      "internalLinks": [
+        "/",
+        "/about/",
+        "/press/",
+        "/lithobreak-outpost/privacy/",
+        "/lithobreak-outpost/delete-account/",
+        "/terms/",
+        "/privacy/"
+      ],
+      "sha256": "ececa3630f3ff0c061450a60857f84c598735de0e78b8d4d04ac327baac7747f"
+    }
+  ],
+  "publicNavigationAndSitemap": "draft routes excluded"
+}

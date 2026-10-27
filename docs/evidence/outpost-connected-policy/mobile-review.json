@@ -1,0 +1,194 @@
+{
+  "date": "2026-10-26",
+  "sourceCommit": "a1c7859",
+  "environment": "Local final Astro build in Chrome responsive device toolbar; not hardware/device testing",
+  "displayZoom": "Fit to window; CSS dimensions verified in the visible toolbar",
+  "result": "pass",
+  "observations": [
+    "No horizontal clipping or overlapping text observed in inspected areas.",
+    "Long package identifier and provider email stayed in the readable column.",
+    "Retention heading cleared the sticky header at both widths.",
+    "Privacy-to-deletion navigation observed; retention anchor reached at both widths.",
+    "No email, account sign-in, deletion request, form submission, provider configuration or production deployment performed."
+  ],
+  "buildPages": [
+    {
+      "page": "privacy",
+      "sha256": "a1ca34f1bd3a4dbe45d75a31221653ccb76ea16ab5d0716db67b9bd13b657039"
+    },
+    {
+      "page": "delete-account",
+      "sha256": "20dadc644156da931de75edc42c2b9d23e98e298b980090b3f6a2acb49045013"
+    },
+    {
+      "page": "terms",
+      "sha256": "7092d0287330edf9959184c6cc97188c61c6671948137f4bef976d94919c96d5"
+    }
+  ],
+  "cases": [
+    {
+      "page": "privacy",
+      "widthCssPx": 390,
+      "heightCssPx": 844,
+      "result": "visual pass",
+      "coverage": "Header, notice, identifier/navigation, retention anchor and windows, lower contact/local-data wording",
+      "captures": [
+        {
+          "file": "privacy-mobile-390-top.jpg",
+          "mimeType": "image/jpeg",
+          "bytes": 176987,
+          "sha256": "c86ba73a7e9893d1a2fb6924ee1ce8387410b8d218e379744158a231f9740b89"
+        },
+        {
+          "file": "privacy-mobile-390-retention.jpg",
+          "mimeType": "image/jpeg",
+          "bytes": 186833,
+          "sha256": "3bad9bc4373db4adf3275058764dee68f0ca3a7daf7cf050056cef446a504c05"
+        },
+        {
+          "file": "privacy-mobile-390-backups.jpg",
+          "mimeType": "image/jpeg",
+          "bytes": 186921,
+          "sha256": "b5650220e6cb12b7ba20b45583a7e4413472cfcf400a76bf9e79066307ec04dd"
+        },
+        {
+          "file": "privacy-mobile-390-contact.jpg",
+          "mimeType": "image/jpeg",
+          "bytes": 182384,
+          "sha256": "33dd0e6121d3d4308c7c64670c815f46d9c8a5576200c65bf6c774a4603c2d9e"
+        }
+      ]
+    },
+    {
+      "page": "privacy",
+      "widthCssPx": 320,
+      "heightCssPx": 844,
+      "result": "visual pass",
+      "coverage": "Header/notice/identifier, narrow wrapping, retention anchor and windows, lower contact/local-data wording",
+      "captures": [
+        {
+          "file": "privacy-mobile-320-top.jpg",
+          "mimeType": "image/jpeg",
+          "bytes": 160918,
+          "sha256": "313eb78a11dec21aacf3d4dda3f7698e2f1e8770ec7b5eec0a7e9631fdb0e66f"
+        },
+        {
+          "file": "privacy-mobile-320-retention.jpg",
+          "mimeType": "image/jpeg",
+          "bytes": 165427,
+          "sha256": "f798a1487d1bac1428210f5348bc6f9221a55386c1dbeb21669dddd31b96620a"
+        },
+        {
+          "file": "privacy-mobile-320-backups.jpg",
+          "mimeType": "image/jpeg",
+          "bytes": 165959,
+          "sha256": "20596f5266dc6f06b347eef8f59d67ee6fc0f5ada2887c005e99daf73e8a9ec5"
+        },
+        {
+          "file": "privacy-mobile-320-contact.jpg",
+          "mimeType": "image/jpeg",
+          "bytes": 163046,
+          "sha256": "6aa2858dbe90b101838b96d5ac4c97c54bb26115bee32024ee11e83803570a11"
+        }
+      ]
+    },
+    {
+      "page": "delete-account",
+      "widthCssPx": 390,
+      "heightCssPx": 844,
+      "result": "visual pass",
+      "coverage": "Header, request email, manual process and timing, provider-account distinction and long support email",
+      "captures": [
+        {
+          "file": "deletion-mobile-390-top.jpg",
+          "mimeType": "image/jpeg",
+          "bytes": 178050,
+          "sha256": "74b940f18d17c8ea2980d17e8c0602bb16fe06337d428222b1e03d60d5a527ce"
+        },
+        {
+          "file": "deletion-mobile-390-process.jpg",
+          "mimeType": "image/jpeg",
+          "bytes": 184144,
+          "sha256": "9bf6cd557abf2a2290acd59d322d4245ffecca51c763af9decce3cbd5fc1ffbe"
+        },
+        {
+          "file": "deletion-mobile-390-timing.jpg",
+          "mimeType": "image/jpeg",
+          "bytes": 190958,
+          "sha256": "e2391355e1fe02dd7f763c46acbd72d5a668bcd23bc8472c75e7803904c340c9"
+        },
+        {
+          "file": "deletion-mobile-390-provider.jpg",
+          "mimeType": "image/jpeg",
+          "bytes": 189110,
+          "sha256": "68cef7cf0a27eb71a1836cbed707aa63e90051070652d36f3e6af91cb31fdb4a"
+        }
+      ]
+    },
+    {
+      "page": "delete-account",
+      "widthCssPx": 320,
+      "heightCssPx": 844,
+      "result": "visual pass",
+      "coverage": "Header/request path, ownership/timing wording, long provider email and local-save/provider-backup sections",
+      "captures": [
+        {
+          "file": "deletion-mobile-320-top.jpg",
+          "mimeType": "image/jpeg",
+          "bytes": 161064,
+          "sha256": "2fe3cbcf829bdbbdf29d512ddbf861b3b3551ffb6379cbdcb4aab9a43ee3f6cc"
+        },
+        {
+          "file": "deletion-mobile-320-timing.jpg",
+          "mimeType": "image/jpeg",
+          "bytes": 165546,
+          "sha256": "85a826924e9a5498d08b1ae36c8d266a44c9ff42a0b5fdb279878c9aaa9e73f2"
+        },
+        {
+          "file": "deletion-mobile-320-provider.jpg",
+          "mimeType": "image/jpeg",
+          "bytes": 166994,
+          "sha256": "66748795d6e3a45bae64d8d0e80fab5a966b1411489358fcd607d08adce5513b"
+        }
+      ]
+    },
+    {
+      "page": "terms",
+      "widthCssPx": 390,
+      "heightCssPx": 844,
+      "result": "visual pass",
+      "coverage": "Current heading, draft boundary, navigation and introductory test wording",
+      "captures": [
+        {
+          "file": "terms-mobile-390-current.jpg",
+          "mimeType": "image/jpeg",
+          "bytes": 176252,
+          "sha256": "cb9b6b4c3961dce617a8a4079848d88e7aad5b64e5d683f4549d5b97f7a11200"
+        }
+      ]
+    },
+    {
+      "page": "terms",
+      "widthCssPx": 320,
+      "heightCssPx": 844,
+      "result": "visual pass",
+      "coverage": "Current title/navigation, support targets, policy links and final review/approval boundary",
+      "captures": [
+        {
+          "file": "terms-mobile-320-top.jpg",
+          "mimeType": "image/jpeg",
+          "bytes": 157509,
+          "sha256": "0d24a7f01ae4f3858961cedbfec71a2ed0f88fa171183d12cfbe0954657bbb5e"
+        },
+        {
+          "file": "terms-mobile-320-support.jpg",
+          "mimeType": "image/jpeg",
+          "bytes": 160969,
+          "sha256": "b0fb07a16c046d2954a82efe88617dc88842a2c3ab5ddbe8601334818d877e4b"
+        }
+      ]
+    }
+  ],
+  "changes": "Documentation and evidence only; no page source fix needed during this pass",
+  "scopeLimit": "Visual checks of recorded layout areas, not an automated DOM overflow audit or a real Android-device test."
+}
