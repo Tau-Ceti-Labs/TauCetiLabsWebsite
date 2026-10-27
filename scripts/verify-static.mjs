@@ -167,7 +167,7 @@ for (const [page, source] of [["privacy", outpostPrivacy], ["delete-account", ou
 for (const obsoleteClaim of ["has no player accounts", "does not send saved progress", "backgrounding freezes every factory"]) {
   if (outpostPrivacy.toLowerCase().includes(obsoleteClaim)) fail(`obsolete Outpost privacy claim: ${obsoleteClaim}`);
 }
-for (const marker of ["Unity Authentication", "Unity Player Account", "offline_access", "without the email scope", "Engineer alias", "cloud campaign backups", "Retention is undecided", "No automatic time-based retention", "not automatically upload your campaign"]) {
+for (const marker of ["Unity Authentication", "Unity Player Account", "offline_access", "without the email scope", "Engineer alias", "cloud campaign backups", 'id="retention"', "Current implementation limit", "not automatically upload your campaign"]) {
   if (!outpostPrivacy.includes(marker)) fail(`Outpost privacy missing connected disclosure: ${marker}`);
 }
 for (const marker of ["site.brand.contactEmail", "without having the app installed", "alias alone is not proof", "does not automatically delete data", "https://player-account.unity.com/delete-account", "unity-player-login-privacy@unity3d.com"]) {
